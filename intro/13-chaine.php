@@ -18,7 +18,29 @@
             for($i=0;$i<strlen($chaine); $i++) {
                 echo "{$chaine[$i]} + ";
             }
+
+            echo "<hr>";
+            //ENCRYPTAGE
+            echo md5("Bonjour a tous");
+            echo "<hr>";
+            echo sha1 ("soleil");
+            echo "<hr>";
+            echo strtoupper($chaine). " ---- ". strtolower($chaine). " --- " .ucfirst($chaine);
+            $chaine_info = "pizza, coca, biere, pain";
+            //permet d'eploser une chaine en un tableau
+            $tab_chaine_info = explode(",",$chaine_info);
+            var_dump($tab_chaine_info);
+
+            //concatenation
+            $html = "<p>Bonjour</p>";
+            $html .= "<p>à tous</p>";
+
+            //permet de nettoyer la chaine de caracteres coté front.
+            echo htmlspecialchars($html);
+
         ?>
+
+
     </div>
 </body>
 </html>
