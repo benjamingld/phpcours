@@ -1,6 +1,5 @@
 <?php 
 
-  
   include("vendor/autoload.php");
   dump($_POST);
 
@@ -38,8 +37,6 @@ if(isset($_POST["validate"])) {
   echo $nom;
 
 }
-
-
 
 ?>
 
