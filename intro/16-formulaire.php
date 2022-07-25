@@ -1,4 +1,7 @@
 <?php 
+//le htmlspecialchars permet de rendre tout le texte en rendu html et evite les fail d'injection.
+function clean ($clean) { return htmlspecialchars($clean);}
+
 //CHARGEMENT DU SYSTEME DE DEPENDANCES
 include("vendor/autoload.php");
 //AFFICHAGE DU TABLEAU COMPLET $_POST
@@ -78,7 +81,7 @@ $erreur = "";
                     echo "</div>";
                 }else {
                     echo "<div class=\"row mt-3 alert alert-success\" role=\"alert\">";
-                    echo "<strong>Bonjour ".htmlspecialchars($prenom).", ".htmlspecialchars($age)." ans</strong>";
+                    echo "<strong>Bonjour ".clean($prenom).", ".clean($age)." ans</strong>";
                     echo "</div>";
                 }
             }
