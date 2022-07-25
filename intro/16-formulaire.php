@@ -1,4 +1,36 @@
-<?phpinclude("vendor/autoload.php") ?>
+<?php 
+//CHARGEMENT DU SYSTEME DE DEPENDANCES
+include("vendor/autoload.php");
+//AFFICHAGE DU TABLEAU COMPLET $_POST
+dump($_POST);
+
+//INITIALISATION DES ERREURS
+$erreur = "";
+$erreur1 = "";
+
+//JE VERIFIE QUE LE FORMULAIRE A ETE SOUMIS
+//ET SI $_POST n'est pas vide
+
+
+
+if(isset($_POST) && !empty($_POST)){
+    //VERIFICATION DES CHAMPS
+    if(isset($_POST["age"]) and is_numeric($_POST["age"])) {
+        $age = $_POST["age"];
+    }else{
+        $erreur .="-Votre age est invalide<br>";
+    };
+
+    if(isset($_POST["prenom"]) and strlen($_POST["prenom"])>3) {
+        $prenom = $_POST["prenom"];
+    }else {
+        $erreur1 .="-Votre prenom est invalide<br>";
+    };     
+}
+
+
+?>
+
 <!doctype html>
 <html lang="en">
   <head>
@@ -17,14 +49,41 @@
             <div class="mb-3 row">
                 <label for="inputName" class="col-xs-4 col-form-label">Votre age</label>
                 <div class="col-xs-8">
-                    <input type="text" class="form-control" name="inputName" id="inputName" placeholder="Age">
+                    <input type="text" class="form-control" name="age" id="inputAge" placeholder="Age">  
+                </div>
+                    
+                <label for="inputName" class="col-xs-4 col-form-label">Votre Prenom</label> 
+                <div class="col-xs-8">
+                    <input type="text" class="form-control" name="prenom" id="inputName" placeholder="Prenom">              
                 </div>
             </div>
-            <div class="mb-3 row">
+
                 <div class="offset-sm-4 col-sm-8">
                     <button type="submit" class="btn btn-primary">Validé</button>
                 </div>
+            </div>            
+
+
+                <div class="col-xs-8">
+                   
+                </div>
             </div>
+            <?php
+
+                if($erreur !="") {  
+                    foreach($erreur as $erreur);
+                        echo "<div class=\"row mt-3 alert alert-danger\" role=\"alert\">";
+                        echo "<strong>{$erreur}</strong>";
+                        echo "</div>";
+                }
+
+                if($erreur1 !="") {  
+                    echo "<div class=\"row mt-3 alert alert-danger\" role=\"alert\">";
+                    echo "<strong>{$erreur1}</strong>";
+                    echo "</div>";
+                }
+            ?>
+  
         </form>
     </div>
     
