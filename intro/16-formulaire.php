@@ -6,27 +6,27 @@ dump($_POST);
 
 //INITIALISATION DES ERREURS
 $erreur = "";
-$erreur1 = "";
 
 //JE VERIFIE QUE LE FORMULAIRE A ETE SOUMIS
 //ET SI $_POST n'est pas vide
 
 
 
-if(isset($_POST) && !empty($_POST)){
-    //VERIFICATION DES CHAMPS
-    if(isset($_POST["age"]) and is_numeric($_POST["age"])) {
-        $age = $_POST["age"];
-    }else{
-        $erreur .="-Votre age est invalide<br>";
-    };
 
-    if(isset($_POST["prenom"]) and strlen($_POST["prenom"])>3) {
-        $prenom = $_POST["prenom"];
-    }else {
-        $erreur1 .="-Votre prenom est invalide<br>";
-    };     
-}
+    if(isset($_POST) && !empty($_POST)){
+        //VERIFICATION DES CHAMPS
+        if(isset($_POST["age"]) and is_numeric($_POST["age"])) {
+            $age = $_POST["age"];
+        }else{
+            $erreur .="-Votre age est invalide<br>";
+        };
+
+        if(isset($_POST["prenom"]) and strlen($_POST["prenom"])>3) {
+            $prenom = $_POST["prenom"];
+        }else {
+            $erreur .="-Votre prenom est invalide<br>";
+        };     
+    }
 
 
 ?>
@@ -70,18 +70,19 @@ if(isset($_POST) && !empty($_POST)){
             </div>
             <?php
 
-                if($erreur !="") {  
-                    foreach($erreur as $erreur);
-                        echo "<div class=\"row mt-3 alert alert-danger\" role=\"alert\">";
-                        echo "<strong>{$erreur}</strong>";
-                        echo "</div>";
-                }
+            if(isset($_POST)  && !empty($_POST)) {
 
-                if($erreur1 !="") {  
+                  if($erreur !="") {
                     echo "<div class=\"row mt-3 alert alert-danger\" role=\"alert\">";
-                    echo "<strong>{$erreur1}</strong>";
+                    echo "<strong>{$erreur}</strong>";
+                    echo "</div>";
+                }else {
+                    echo "<div class=\"row mt-3 alert alert-success\" role=\"alert\">";
+                    echo "<strong>Bonjour ".htmlspecialchars($prenom).", ".htmlspecialchars($age)." ans</strong>";
                     echo "</div>";
                 }
+            }
+              
             ?>
   
         </form>
