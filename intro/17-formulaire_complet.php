@@ -1,5 +1,45 @@
 <?php 
+
   
+  include("vendor/autoload.php");
+  dump($_POST);
+
+
+  function convertSpace($value){
+    $value = trim($value);
+    $value = str_replace(" ","-",$value);
+    $value = strtoupper($value);
+    return $value;
+  }
+
+  $erreur="";
+
+  //fonctionne uniquement avec l'input de type submit pour le bouton dans le formulaire 
+if(isset($_POST["validate"])) {
+  filter_input(INPUT_POST, "nom", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+  //equivalent à :
+  //$nom = htmlspecialchars($_POST["nom"]);
+
+  //si nom existe et qu'il soit diffrent de vide sur un chaine ou on supprime les espaces avant et après.
+  if(isset($_POST["prenom"]) and  !empty(trim($_POST["prenom"])) and srtlen($_POST["prenom"])>3) {
+    $prenom = htmlspecialchars(($_POST["prenom"])); 
+  }else {
+    $erreur .= "-Prénom Invalide<br>";
+  }
+
+  //FILTRE DE FVALIDATION POUR LE MAIL
+  if(filter_input(INPUT_POST, "email", FILTER_VALIDATE_EMAIL)){
+    $email = htmlspecialchars(($_POST["email"])); 
+  }else {
+    $erreur .= "-Email Invalide<br>";
+  }
+
+  $nom = filter_input(INPUT_POST,"nom", FILTER_CALLBACK, ["option" => "convertSpace"]);
+  echo $nom;
+
+}
+
+
 
 ?>
 
@@ -46,6 +86,7 @@
             <label for="ceramique">céramique</label><br>
             </fieldset>
         <input type="submit" name="validate" value="Valider">
+        <div style="background-color:red; border-radius:10px; border:2px solid black; font-size:25px"><?php if($erreur) echo $erreur ?></div>
     </form>
 </body>
 </html>
