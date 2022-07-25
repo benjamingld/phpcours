@@ -1,7 +1,7 @@
 <?php
 //mode plus strict
 //AVEC LES BALISES HTML , on place le declare au dessus du DOCTYPE.
-declare(strict_types=1);
+//declare(strict_types=1);
 
 // =============================================================
 //         DEFINITION DE LA FONCTION/PROCEDURE (PROTOTYPE)
@@ -173,10 +173,10 @@ $func = "hello1";
 $func ("Sébastien");
 
 // =============================================================
-//                     FONCTION ANONYME (CLOSURE)
+//                     FONCTION ANONYME
 // =============================================================
     
-echo "<hr><h2>FONCTION ANONYME (CLOSURE)</h2>";
+echo "<hr><h2>FONCTION ANONYME</h2>";
 
 //PENSEZ UU POINT VIRGULE FINALE
 $greet = function ($name) {
@@ -197,11 +197,48 @@ $greet = 1;
 echo "<hr><h2>FONCTIONS AVEC IMPORTATION DE VARIABLES</h2>";
 
 $message = "HELLO";
-
-$greet = function(string $name) use (&$message):void{
-    echo "{$message} {$name}";
+$other = "Au revoir";
+//importer une variable du parent au dessus.
+$greet = function(string $name) use (&$message, $other):void{
+    echo "{$message} {$name} {$other}";
     $message = "Au revoir";
 };
 
 $greet("Anthony");
-echo $message;
+var_dump($message, $other);
+
+// =============================================================
+//            FONCTIONS : CLOSURE (fonction anonyme)
+// =============================================================
+    
+echo "<hr><h2>FONCTIONS : CLOSURE (fonction anonyme)</h2>";
+
+//fonction qui appelle une autre fonction.
+function creerAdditionner(int $quantite = 20):callable{
+    return function ($n) use ($quantite) {
+        return $n + $quantite;
+    };
+}
+
+$listeNbr = [1,2,3,4,5];
+
+$tab2 = array_map(creerAdditionner(), $listeNbr);
+var_dump($tab2);
+$tab2 = array_map(creerAdditionner(50), $listeNbr);
+var_dump($tab2);
+
+
+
+echo "================ exo ====================";
+function creerAdditionner2(int $quantite = 20,int $multiple = 10):callable{
+    return function ($n) use ($quantite,$multiple) {
+        return ($n + $quantite) * $multiple;
+    };
+}
+
+$listeNbr = [1,2,3,4,5];
+
+$tab2 = array_map(creerAdditionner2(), $listeNbr);
+var_dump($tab2);
+$tab2 = array_map(creerAdditionner2(5, 15), $listeNbr);
+var_dump($tab2);
