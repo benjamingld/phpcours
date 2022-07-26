@@ -11,7 +11,7 @@
 
     $valid_data= $gump-> run($_POST);
 
-    if ($gump->errors()) {
+    if (isset($_POST["send"]) && $gump->errors()) {
         $error = $gump->get_errors_array();
     } else {
         $valid_data;
@@ -46,7 +46,7 @@
 
         if(isset($_POST) && !empty($_POST)){
             foreach($error as $key => $value){
-                echo "<div>{$value}</div>";
+                echo "<div class=\"alert alert-danger\">{$value}</div>";
             }
 
             echo "<a href=\"infosession.php\" >information Session\"</a>";
