@@ -33,10 +33,29 @@ if(isset($_POST["validate"])) {
     $erreur .= "-Email Invalide<br>";
   }
 
-  $nom = filter_input(INPUT_POST,"nom", FILTER_CALLBACK, ["option" => "convertSpace"]);
-  echo $nom;
+    //FILTRE PERSONNALISE
+    $nom = filter_input(INPUT_POST,"nom", FILTER_CALLBACK, ["options"=>"convertSpace"]);
+    echo $nom;
+
+    //FILTER TYPE TABLEAU RENVOI NULL SI AUCUN INTERET COCHE
+    $interet = filter_input(INPUT_POST, 'interet', FILTER_DEFAULT, FILTER_REQUIRE_ARRAY);
+    //ON PEUT DONC TESTER ET DEMANDER A COCHER AU MOINS 1 CASE
+    if($interet==NULL){
+       $erreur.= "Veuillez saisir au moins 1 intéret<br>";
+    }
+
+    //TESTER UNE VARIABLE pour savoir si par exemple civilité est bien présente dans $_POST
+    if(filter_has_var(INPUT_POST, 'civilite')) {
+        echo "Vous avez bien saisi votre civilité<br>";
+    } else {
+        echo "Vous n'avez pas saisi votre civilité<br>";
+    }
+
+    //EQUIVALENT isset($_POST['civilite'])
+
 
 }
+
 
 ?>
 
