@@ -1,5 +1,5 @@
 <?php
-seesion_start();
+session_start();
 
 // SI LA SESSION N'EXISTE PAAS JE REDIRIGE
 if(!isset($_SESSION["mail"]) and !isset($_SESSION["pass"])) {
