@@ -9,6 +9,7 @@ class ComposerStaticInit2a1aeaa8b7dab38625afff892f00bb9d
     public static $files = array (
         '0e6d7bf4a5811bfa5cf40c5ccd6fae6a' => __DIR__ . '/..' . '/symfony/polyfill-mbstring/bootstrap.php',
         '667aeda72477189d0494fecd327c3641' => __DIR__ . '/..' . '/symfony/var-dumper/Resources/functions/dump.php',
+        'da253f61703e9c22a5a34f228526f05a' => __DIR__ . '/..' . '/wixel/gump/gump.class.php',
     );
 
     public static $prefixLengthsPsr4 = array (
@@ -16,6 +17,10 @@ class ComposerStaticInit2a1aeaa8b7dab38625afff892f00bb9d
         array (
             'Symfony\\Polyfill\\Mbstring\\' => 26,
             'Symfony\\Component\\VarDumper\\' => 28,
+        ),
+        'G' => 
+        array (
+            'GUMP\\' => 5,
         ),
     );
 
@@ -27,6 +32,10 @@ class ComposerStaticInit2a1aeaa8b7dab38625afff892f00bb9d
         'Symfony\\Component\\VarDumper\\' => 
         array (
             0 => __DIR__ . '/..' . '/symfony/var-dumper',
+        ),
+        'GUMP\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/wixel/gump/src',
         ),
     );
 
