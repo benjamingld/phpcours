@@ -1,11 +1,10 @@
 <?php
-
-$info = include '18-return.php';
-echo $info;
+//ME PERMET DE RENVOYER UN CODE ERREUR
+header("HTTP/1.1 410 Gone");
+//TRES IMPORTANT POUR DESINDEXER UNE PAGE DANS GOOGLE.
+//IMPORTANT POUR LE REFERENCEMENT
 
 ?>
-
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -16,9 +15,6 @@ echo $info;
     <title>Document</title>
 </head>
 <body>
-    <?php include_once '18-noreturn.php'; ?>
-    <?php echo realpath('18-noreturn.php') ."<br>"; ?>
-    <?php echo __DIR__ . "<br>"; echo __FLIE__ . "<br>"; ?>
-    <?php echo dirname(__DIR__); ?>
+    ERREUR 410
 </body>
 </html>

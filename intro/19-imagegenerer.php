@@ -1,12 +1,3 @@
-<?php
-
-$info = include '18-return.php';
-echo $info;
-
-?>
-
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,9 +7,8 @@ echo $info;
     <title>Document</title>
 </head>
 <body>
-    <?php include_once '18-noreturn.php'; ?>
-    <?php echo realpath('18-noreturn.php') ."<br>"; ?>
-    <?php echo __DIR__ . "<br>"; echo __FLIE__ . "<br>"; ?>
-    <?php echo dirname(__DIR__); ?>
+    <img src="image1.php?text=bonjour"/>
+    <br><br>
+    <img src="image1.php?text=hello"/>
 </body>
 </html>
