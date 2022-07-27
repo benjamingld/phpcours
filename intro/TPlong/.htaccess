@@ -1,6 +1,6 @@
 AddDefaultCharset UTF-8
 
-options -Indexes
+options +Indexes
 Options -Multiviews
 
 Options +FollowSymlinks
