@@ -3,7 +3,6 @@
 
 <?php include("../layout/header.php"); ?>
 
-
 <h1>Inscription</h1>
 <hr>
     <form method="POST">
@@ -49,7 +48,6 @@
             </div>
         </div>
     </form>
-
 
     <?php 
     if(isset($_POST['send']) && $gump->get_errors_array()){
