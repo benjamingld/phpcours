@@ -1,13 +1,14 @@
 <?php
 
+echo "<br><h1>Exercice 1</h1><br>";
 echo "Créez une fonction possédant 2 arguments en entrée vérifiant si un chiffre et plus grand que l’autre ou égal. Utiliser l’opérateur spaceship et un switch pour analyser le résultat de l’opérateur.<br><br>";
 
-    $a = 4;
-    $b = 25;
 
-    $result = $a <=> $b;
 
-    switch($result){
+    function Dif($a,$b) {    
+        
+        $result = $a <=> $b;
+        switch($result){
            case -1:
             echo "Le $a est inférieur a $b<br>";
             break;
@@ -17,25 +18,56 @@ echo "Créez une fonction possédant 2 arguments en entrée vérifiant si un chi
            case 1:
             echo "Le $a est supérieur a $b<br>";
             break;
-    };
+        };
+    }
+
+    Dif(4,25);
+    
      
+
+echo "<br><h1>Exercice 2</h1><br>";
 echo "<br>Inversez la chaîne de caractère “156987”, créer une fonction inversant les caractères d’une chaîne de caractères (NE PAS UTILISER STRREV…)
 <br><br>";
 
-    $chaine = "156987";
+    function inverse($chiffre){
+//      $chiffre = "156987";
+//      $chiffre = [0=>1, 1=>5, 2=>6, 3=>9, 4=>8, 5=>7];
+
+        for($i=strlen($chiffre)-1; $i>=0; $i--){
+            echo $chiffre[$i];
+        }
+    }
+
+inverse("156987");
 
 
+// $i = 5  donc  $chiffre[$i] = 7
+// $i = 4  donc  $chiffre[$i] = 8
+// $i = 3  donc  $chiffre[$i] = 9
+// $i = 2  donc  $chiffre[$i] = 6
+// $i = 1  donc  $chiffre[$i] = 5
+// $i = 0  donc  $chiffre[$i] = 1
 
+    echo "<br><h1>Exercice 3</h1><br>";
 echo "<br>Créez une fonction vous retournant l’acronyme d’une phrase. (NE PAS UTILISER DE REGEX CAR PAS ENCORE VU…)
 Exemple : Bonjour je mange dehors.
 Résultat : BJMD.<br><br>";
 
-    $mot = "Bonjour je mange dehors";
+    function acronyme($mot){
 
-    $tab_chaine_info = explode(" ",$mot);
-    var_dump($tab_chaine_info);
+        $mot = "Bonjour je mange dehors";
 
-    for($i=0;$i<count($tab_chaine_info); $i++) {
-        echo "{$tab_chaine_info[$i]}";
-  }
+        $tab_chaine_info = explode(" ",$mot);
+        var_dump($tab_chaine_info);
+        $tab_chaine_info;
+
+        for($i=0;$i<count($tab_chaine_info); $i++) {
+            $chaine_info = $tab_chaine_info[$i];
+            echo strtoupper($chaine_info[0]);
+
+        }
+    }
+
+    acronyme("Bonjour je mange dehors");
+   
 ?>
