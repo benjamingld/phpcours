@@ -1,32 +1,7 @@
-<?php include("../vendor/autoload.php"); ?>
+<?php include("../configuration/config-global.php") ?>
+<?php include("../controller/verification.php") ?>
 
-<?php
-$gump = new GUMP("fr");
-
-// set validation rules
-$gump->validation_rules([
-    'civilite'    => 'required|contains,Monsieur;Madame',
-    'nom'         => 'required|min_len,3|max_len,10',
-    'prenom'      => 'required|min_len,3|max_len,10',
-    'age'         => 'required|integer',
-    'mail'       => 'required|valid_email'
-]);
-
-
-// on success: returns array with same input structure, but after filters have run
-// on error: returns false
-$valid_data = $gump->run(array_map("trim",$_POST));
-
-//SI IL N'Y A PAS D'ERREUR
-if (!$gump->errors()) {
-    $valid_data;   
-    header("location: connexion.php");
-}
-
-?>
-
-
-<?php include("mise-en-page/header.php"); ?>
+<?php include("../layout/header.php"); ?>
 
 
 <h1>Inscription</h1>
@@ -89,4 +64,4 @@ if (!$gump->errors()) {
     ?>
 
 
-<?php include("mise-en-page/footer.php");?>
+<?php include("../layout/footer.php");?>

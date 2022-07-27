@@ -1,4 +1,7 @@
-<?php include("mise-en-page/header.php"); ?>
+<?php include("../configuration/config-global.php") ?>
+<?php include("../controller/verification.php") ?>
+<?php include("../layout/header.php"); ?>
+
 
 
 <h1>Formulaire de contact</h1>
@@ -40,4 +43,4 @@
     </form>
 
 
-<?php include("mise-en-page/footer.php");?>
+<?php include("../layout/footer.php");?>

@@ -7,8 +7,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap CSS v5.2.0-beta1 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css"  integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
-
+    <link rel="stylesheet" href="assets/css/base.css">
   </head>
   <body>
   <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
@@ -21,16 +22,34 @@
         <div class="collapse navbar-collapse" id="collapsibleNavId">
             <ul class="navbar-nav me-auto mt-2 mt-lg-0">
                 <li class="nav-item active">
-                    <a class="nav-link" href="home.php">Home</a>
+                    <a class="nav-link" href="home.php">Accueil</a>
                 </li>
+                <?php if(isset($_SESSION['mail'])){ ?>
+
+
+                    <li class="nav-item">
+                    <a class="nav-link" href="profil.php">Profil</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="logout.php">Déco</a>
+                    </li>
+
+
+                <?php } else { ?>
+
+
                 <li class="nav-item">
-                    <a class="nav-link" href="inscription.php">Inscription</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="contact.php">Contact</a>
+                    <a class="nav-link" href="inscription.php">Création de compte</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="connexion.php">Connexion</a>
+                </li>
+
+                <?php } ?>
+
+                
+                <li class="nav-item">
+                    <a class="nav-link" href="contact.php">Contact</a>
                 </li>
             </ul>
         </div>
