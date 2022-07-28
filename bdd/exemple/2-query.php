@@ -14,7 +14,7 @@ if(isset($_GET['user_id'])){                     //equivalent au htmlspecialchar
 var_dump($sql1,$sql2);
 
 
-$result = $connexion->query($sql1);
+$result = $connexion->query($sql2);
 
 var_dump($result);
 
