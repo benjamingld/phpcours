@@ -54,16 +54,14 @@ echo "<br>Créez une fonction vous retournant l’acronyme d’une phrase. (NE P
 Exemple : Bonjour je mange dehors.
 Résultat : BJMD.<br><br>";
 
-    function acronyme($mot){
+    function acronyme($chaine){
 
-        $mot = "Bonjour je mange dehors";
+        $chaine = trim($chaine);
+        $tab_chaine = explode(" ",$chaine);
+        var_dump($tab_chaine);
 
-        $tab_chaine_info = explode(" ",$mot);
-        var_dump($tab_chaine_info);
-        $tab_chaine_info;
-
-        for($i=0;$i<count($tab_chaine_info); $i++) {
-            $chaine_info = $tab_chaine_info[$i];
+        for($i=0;$i<count($tab_chaine); $i++) {
+            $chaine_info = $tab_chaine[$i];
             echo strtoupper($chaine_info[0]);
 
         }
