@@ -5,23 +5,24 @@ echo "Créez une fonction possédant 2 arguments en entrée vérifiant si un chi
 
 
 
-    function Dif($a,$b) {    
+    function dif($a,$b) {    
         
         $result = $a <=> $b;
         switch($result){
            case -1:
-            echo "Le $a est inférieur a $b<br>";
+            echo "Le $a est inférieur à $b<br>";
             break;
            case 0:
             echo "Les 2 chiffres sont égaux<br>";
             break;
            case 1:
-            echo "Le $a est supérieur a $b<br>";
+            echo "Le $a est supérieur à $b<br>";
             break;
         };
     }
 
-    Dif(4,25);
+    dif(4,25);
+    dif(5,5);
     
      
 
@@ -40,7 +41,6 @@ echo "<br>Inversez la chaîne de caractère “156987”, créer une fonction in
 
 inverse("156987");
 
-
 // $i = 5  donc  $chiffre[$i] = 7
 // $i = 4  donc  $chiffre[$i] = 8
 // $i = 3  donc  $chiffre[$i] = 9
@@ -48,7 +48,7 @@ inverse("156987");
 // $i = 1  donc  $chiffre[$i] = 5
 // $i = 0  donc  $chiffre[$i] = 1
 
-    echo "<br><h1>Exercice 3</h1><br>";
+echo "<br><h1>Exercice 3</h1><br>";
 echo "<br>Créez une fonction vous retournant l’acronyme d’une phrase. (NE PAS UTILISER DE REGEX CAR PAS ENCORE VU…)
 Exemple : Bonjour je mange dehors.
 Résultat : BJMD.<br><br>";
