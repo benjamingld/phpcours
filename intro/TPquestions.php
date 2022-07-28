@@ -41,6 +41,7 @@ echo "<br>Inversez la chaîne de caractère “156987”, créer une fonction in
 
 inverse("156987");
 
+
 // $i = 5  donc  $chiffre[$i] = 7
 // $i = 4  donc  $chiffre[$i] = 8
 // $i = 3  donc  $chiffre[$i] = 9
