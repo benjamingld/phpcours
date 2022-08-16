@@ -1,5 +1,5 @@
 <?php
-include_once "config/setup.php";
+include_once "exemple/config/setup.php";
 $co = getPDO();
 
 $sql = "UPDATE utilisateur SET nom={$co->quote("MICHEL")}, prenom={$co->quote("Jean")} where id = 1";
