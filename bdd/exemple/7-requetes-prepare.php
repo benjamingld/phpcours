@@ -81,7 +81,7 @@ $sql = "UPDATE utilisateur SET nom=:nom WHERE id=:id";
 //donner la main a PO pour compiler la requete en memoire
 $statement = $connexion->prepare($sql);
 var_dump($statement);
-$statement->execute([":nom" => "Anthony", " id" => 1]);
+$statement->execute([":nom" => "Anthony", ":id" => 1]);
 
 //compter le nombre de lignes affectees
 if($statement->rowCount()){
@@ -99,5 +99,21 @@ if($statement->rowCount()){
     echo "update non realise2<br>";
 }
 
-
 echo "Voir code <br>";
+
+
+
+echo "<h2>REQUETES PREPARE BINDCOLUMN</h2>";
+
+$sql = "SELECT nom, prenom, mail FROM utilisateur limit 5";
+$statement = $connexion->prepare($sql);
+
+$statement->bindColumn(1, $nom);
+$statement->bindColumn(2, $prenom);
+$statement->bindColumn(3, $mail);
+
+$statement->execute();
+
+while($statement->fetch(PDO::FETCH_BOUND)){
+    echo "{$nom} {$prenom} {$mail} <br>";
+}
