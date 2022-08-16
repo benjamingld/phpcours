@@ -1,0 +1,24 @@
+AddDefaultCharset UTF-8
+# NE PAS LISTER LE CONTENU D'UN DOSSIER
+Options -Indexes
+Options -Multiviews
+# NE COMPLETE PAS LE FICHIER PAR SON EXTENSION
+Options +FollowSymlinks
+# RECURSIVITE DANS LES SOUS DOSSIER
+RewriteOptions Inherit
+# NE PAS TRANSITE LE SESSION ID DANS L'URL
+SetEnv SESSION_USE_TRANS_SID 0
+
+RewriteEngine On
+RewriteBase /phpcours/intro/tp/
+
+# [^\s?] tout caractere qui n'est pas un espace - ? O ou 1  - * 0 / plusieurs
+#%1 reference à rewriteCond
+#$1 reference a rewriteRule
+RewriteCond %{THE_REQUEST} /public/([^\s?]*) [NC]
+RewriteRule ^(.*) %1 [L,NE,R=301]
+
+# PERMET DE RECUPERER LE CONTENU DE LA PAGE XXX.php dans public/xxx.php
+ RewriteRule ^((?!public/).*)$  public/$1 [L,NC]
+
+
