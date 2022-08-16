@@ -91,8 +91,9 @@ if($_SERVER['REQUEST_URI'] === "/phpcours/intro/tp/creation_compte.php"){
     //SI IL N'Y A PAS D'ERREUR
     if (!$gump->errors()) {
         //JE N'AI PAS D'ERREURS
-        var_dump($valid_data);   
-        //INSERTION EN BASE DE DONNEES
+        var_dump($valid_data);  
+         
+        $bd = "INSERT INTO utilisateur (`civilité`,`nom`,`prenom`,`age`,`email`) VALUES ($_POST(['civilité']), $_POST(['nom']), $_POST(['prenom']), $_POST(['age']), $_POST(['email']))";
     }
 }
 
