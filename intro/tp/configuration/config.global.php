@@ -4,5 +4,8 @@ include("session.php");
 //INLURE MON AUTOLOAD
 include("autoload.php");
 
-include("setup.php");
-include("bdd_connexion.php");
+
+//inclure mes constantes de connexion bdd
+include_once("config_database.php");
+//inclure la connexion bdd
+include_once("database.php");

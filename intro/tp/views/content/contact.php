@@ -1,10 +1,3 @@
-<?php include("../configuration/config.global.php"); ?>
-
-<?php include("../controller/verification.php"); ?>
-
-<?php include("../layout/header.php"); ?>
-
-
 <h1>Formulaire de contact</h1>
 <hr>
     <form method="post">
@@ -23,7 +16,7 @@
         <div class="form-group row mt-3">
             <label for="inputName" class="col-sm-2 col-form-label">E-mail</label>
             <div class="col-sm-10">
-                <input type="text" class="form-control" name="mail"  placeholder="E-mail">
+                <input type="mail" class="form-control" name="mail"  placeholder="E-mail">
             </div>
         </div>
         <div class="form-group mt-3">
@@ -37,16 +30,17 @@
         </div>
     </form>
     <?php 
-    if(isset($_POST['soumettre']) && $gump->get_errors_array()){
-        echo "<div class=\"alert alert-danger mt-3\">";
+    if(isset($_POST['soumettre'])){
+        if($gump->get_errors_array()){ 
+            echo "<div class=\"alert alert-danger mt-3\">";
             echo "<ul>";
             foreach($gump->get_errors_array() as $value){
                 echo "<li>{$value}</li>";
             }
             echo "</ul>";
         echo "</div>";
+        }else{
+            echo "<div class=\"alert alert-success mt-3\">Demande envoyer</div>";
+        }   
     }
     ?>
-
-
-<?php include("../layout/footer.php");?>

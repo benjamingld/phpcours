@@ -19,6 +19,13 @@ RewriteCond %{THE_REQUEST} /public/([^\s?]*) [NC]
 RewriteRule ^(.*) %1 [L,NE,R=301]
 
 # PERMET DE RECUPERER LE CONTENU DE LA PAGE XXX.php dans public/xxx.php
- RewriteRule ^((?!public/).*)$  public/$1 [L,NC]
+RewriteRule ^((?!public/).*)$  public/$1 [L,NC]
+
+#SI L URL NE CORRESPOND PAS AU CONTENU A UN FICHIER QUI EST EXISTANT SUR LE SERVEUR
+RewriteCond %{REQUEST_FILENAME} !-f
+#SI L URL NE CORRESPOND PAS AU CONTENU A UN DOSSIER QUI EST EXISTANT SUR LE SERVEUR
+RewriteCond %{REQUEST_FILENAME} !-D
+#CES URL SONT REDIRIGER VERS index.php
+RewriteRule ^(.*)$ index.php?$1 [L,QSA]
 
 
