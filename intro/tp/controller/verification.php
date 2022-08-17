@@ -55,8 +55,6 @@ if($_SERVER['REQUEST_URI'] === D_ROOT."contact.php"){
             echo $x;
         ;
         }
-        
-
     }
 }
 
