@@ -80,7 +80,7 @@ if($_SERVER['REQUEST_URI'] === "/phpcours/intro/tp/creation_compte.php"){
         'nom'         => 'required|max_len,50|min_len,3',
         'prenom'      => 'required|max_len,50|min_len,3',
         'age'         => 'required|integer',
-        'email'       => 'required|valid_email'
+        'mail'       => 'required|valid_email'
     ]);
 
 
@@ -92,7 +92,7 @@ if($_SERVER['REQUEST_URI'] === "/phpcours/intro/tp/creation_compte.php"){
     if (!$gump->errors()) {
         //JE N'AI PAS D'ERREURS
         var_dump($valid_data);  
-         
+        
         $bd = "INSERT INTO utilisateur (`civilité`,`nom`,`prenom`,`age`,`email`) VALUES ($_POST(['civilité']), $_POST(['nom']), $_POST(['prenom']), $_POST(['age']), $_POST(['email']))";
     }
 }
