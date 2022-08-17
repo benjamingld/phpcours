@@ -6,26 +6,26 @@
 
 <?php
     switch(strtok($_SERVER['REQUEST_URI'],"?")){
-        case "/phpcours/intro/tp/index.php":
+        case D_ROOT:
             require_once "../views/content/index.php";
             break;
-        case "/phpcours/intro/tp/creation_compte.php":
+        case D_ROOT."creation_compte.php":
             require_once "../views/content/account.php";
             break;
-        case "/phpcours/intro/tp/connexion.php":
+        case D_ROOT."connexion.php":
             require_once "../views/content/login.php";
             break;
-        case "/phpcours/intro/tp/contact.php":
+        case D_ROOT."contact.php":
             require_once "../views/content/contact.php";
             break;
-        case "/phpcours/intro/tp/profil.php":
+        case D_ROOT."profil.php":
             require_once "../views/content/profile.php";
             break;
-        case "/phpcours/intro/tp/logout.php":
-            require_once "../views/content/logout.php";
+        case D_ROOT."logout.php":
             break;
         default :
-            echo "Erreur";
+            require_once "../views/content/error.php";
+            break;
     }
 ?>
 

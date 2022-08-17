@@ -22,3 +22,5 @@ if(file_exists(FICHIER)){
 $contenu .= "Une nouvelle ligne - ".date("d/m/Y H:i:s") ."\n";
 //J'AJOUTE LE CONTENU
 file_put_contents(FICHIER, $contenu);
+
+?>

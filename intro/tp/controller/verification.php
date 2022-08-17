@@ -1,12 +1,14 @@
 <?php
+
 //REDIRECT
-if(!isset($_SESSION['mail']) && $_SERVER['REQUEST_URI'] === "/phpcours/intro/tp/profil.php"){
+if(!isset($_SESSION['mail']) && $_SERVER['REQUEST_URI'] === D_ROOT."profil.php"){
     header("Location: connexion.php");
 }
 
 
 //CONTROL
-if($_SERVER['REQUEST_URI'] === "/phpcours/intro/tp/contact.php"){
+if($_SERVER['REQUEST_URI'] === D_ROOT."contact.php"){
+
 
     $gump = new GUMP("fr");
 
@@ -28,31 +30,44 @@ if($_SERVER['REQUEST_URI'] === "/phpcours/intro/tp/contact.php"){
         //JE N'AI PAS D'ERREURS
 
         var_dump($valid_data);   
-
         //INSERTION EN BASE DE DONNEES
+        
+        try{
         $connexion = getPDO();
         //PERMETTRE DE SAVOIR SI UN UTILISATEUR EXISTE
-
-        $sql = "INSERT INTO contact (`nom`,`prenom`,`mail`,`demande`) VALUES (:nom,:prenom,:mail,:demande)";
-        $prep = $connexion->prepare($sql);
-        $prep->execute([
+        
+            $sql = "INSERT INTO contact (`nom`,`prenom`,`mail`,`demande`) VALUES (:nom,:prenom,:mail,:demande)";
+            $prep = $connexion->prepare($sql);
+            $prep->execute([
             'nom'       => $valid_data['nom'],
             'prenom'    => $valid_data['prenom'],
             'mail'      => $valid_data['mail'],
             'demande'   => $valid_data['demande']
-        ]);
+            ]);
+        }catch(PDOException $e){
+            //historisation($nomfichier, PDOException)
+            $x = "--ERREUR REQUETE LE".date("d/m/y H:i:s")."--<br>";
+            $x = $x. "[FICHIER] : ".$e->getFile()."<br>";
+            $x = $x. "[LIGNE] : ".$e->getLine()."<br>";
+            $x = $x. "[CODE] : ".$e->getCode()."<br>";
+            $x = $x. "[MESSAGE] : ".$e->getMessage()."<br>";
+            $x = $x. "[IP USER] : ".$_SERVER["REMOTE_ADDR"]."<br>";
+            echo $x;
+        ;
+        }
+        
 
     }
 }
 
 
-if($_SERVER['REQUEST_URI'] === "/phpcours/intro/tp/connexion.php"){
+if($_SERVER['REQUEST_URI'] === D_ROOT."connexion.php"){
     $gump = new GUMP("fr");
 
     // set validation rules
     $gump->validation_rules([
         'mail'           => 'required|valid_email',
-        'pass'           => 'required|min_len,6',
+        'password'           => 'required|min_len,6',
     ]);
 
 
@@ -65,34 +80,46 @@ if($_SERVER['REQUEST_URI'] === "/phpcours/intro/tp/connexion.php"){
         //JE N'AI PAS D'ERREURS
         //var_dump($valid_data);   
         //VERIFICATION BASE DE DONNEES
+        
+        try{
         $connexion = getPDO();
-        $sql = "SELECT * FROM utilisateur WHERE email = ?";
-        $prep = $connexion->prepare($sql);
-        $prep->execute([$valid_data['mail']]);
 
-        if($prep->rowCount()){
-            $result = $prep->fetch(PDO::FETCH_ASSOC);
+            $sql = "SELECT * FROM utilisateur WHERE email = ?";
+            $prep = $connexion->prepare($sql);
+            $prep->execute([$valid_data['mail']]);
 
-            if($result['password'] == $valid_data['pass']){
+            if($prep->rowCount()){
+                $result = $prep->fetch(PDO::FETCH_ASSOC);
 
-                $_SESSION['mail'] = $valid_data['mail'];
-                $_SESSION['password'] = $valid_data['password'];
-                header('Location: profil.php');
-            }else {
-                //PASSWORD INCORRECT
-                $erreur = "Votre mot de passe est incorrect";
+                if($result['password'] == $valid_data['password']){
+
+                    $_SESSION['mail'] = $valid_data['mail'];
+                    $_SESSION['password'] = $valid_data['password'];
+                    header('Location: profil.php');
+                }else {
+                    //PASSWORD INCORRECT
+                    $erreur = "Votre mot de passe est incorrect";
+                }
+            }else{
+                //AUCUN USER
+                $erreur = "Aucun compte utilisateur existe avec ce mail";
             }
-        }else{
-            //AUCUN USER
-            $erreur = "Aucun compte utilisateur existe avec ce mail";
+        }catch(PDOException $e){
+            $x = "--ERREUR REQUETE LE".date("d/m/y H:i:s")."--<br>";
+            $x = $x. "[FICHIER] : ".$e->getFile()."<br>";
+            $x = $x. "[LIGNE] : ".$e->getLine()."<br>";
+            $x = $x. "[CODE] : ".$e->getCode()."<br>";
+            $x = $x. "[MESSAGE] : ".$e->getMessage()."<br>";
+            $x = $x. "[IP USER] : ".$_SERVER["REMOTE_ADDR"]."<br>";
+            echo $x;
+        ;
         }
+
     }
-
-
 }
 
 
-if($_SERVER['REQUEST_URI'] === "/phpcours/intro/tp/creation_compte.php"){
+if($_SERVER['REQUEST_URI'] === D_ROOT."creation_compte.php"){
     $gump = new GUMP("fr");
     $erreur = "";
 
@@ -116,34 +143,52 @@ if($_SERVER['REQUEST_URI'] === "/phpcours/intro/tp/creation_compte.php"){
     if (!$gump->errors()) {
         //JE N'AI PAS D'ERREURS
         var_dump($valid_data);  
-        //INSERTION EN BASE DE DONNEE
+        //INSERTION EN BASE DE DONNEE 
+        
+        try{
         $connexion = getPDO();
         //PERMETTRE DE SAVOIR SI UN UTILISATEUR EXISTE
-        $sql = "SELECT * FROM utilisateur WHERE email = :email";
-        $prep = $connexion->prepare($sql);
-        $prep->execute(["email"=>$valid_data['email']]);
-        //SI AUCUNE LIGNE ALORS USER NON EXISTANT DANS LA BDD
-        if($prep->rowCount()==0){
-            $sql = "INSERT INTO `utilisateur`(`civilite`,`nom`, `prenom`, `naissance`, `email`, `password`, `ip`) VALUES (:civilite,:nom,:prenom,:naissance,:email,:password,:ip)";
+       
+            $sql = "SELECT * FROM utilisateur WHERE email = :email";
             $prep = $connexion->prepare($sql);
-            $prep->execute([
-                'civilite'      => $valid_data['civilite'],
-                'nom'           => $valid_data['nom'],
-                'prenom'        => $valid_data['prenom'],
-                'naissance'     => $valid_data['naissance'],
-                'email'         => $valid_data['email'],
-                'password'      => $valid_data['password'],
-                'ip'            => $_SERVER['REMOTE_ADDR']
-            ]);
-        } else {
-            $erreur .= "Ce mail a déjà été utilisé";
+            $prep->execute(["email"=>$valid_data['email']]);
+            //SI AUCUNE LIGNE ALORS USER NON EXISTANT DANS LA BDD
+            if($prep->rowCount()==0){
+                $sql = "INSERT INTO `utilisateur`(`civilite`,`nom`, `prenom`, `naissance`, `email`, `password`, `ip`) VALUES (:civilite,:nom,:prenom,:naissance,:email,:password,:ip)";
+                $prep = $connexion->prepare($sql);
+                $prep->execute([
+                    'civilite'      => $valid_data['civilite'],
+                    'nom'           => $valid_data['nom'],
+                    'prenom'        => $valid_data['prenom'],
+                    'naissance'     => $valid_data['naissance'],
+                    'email'         => $valid_data['email'],
+                    'password'      => $valid_data['password'],
+                    'ip'            => $_SERVER['REMOTE_ADDR']
+                ]);
+            } else {
+                $erreur .= "Ce mail a déjà été utilisé";
+            }
+        }catch(PDOException $e){
+            $x = "--ERREUR REQUETE LE".date("d/m/y H:i:s")."--<br>";
+            $x = $x. "[FICHIER] : ".$e->getFile()."<br>";
+            $x = $x. "[LIGNE] : ".$e->getLine()."<br>";
+            $x = $x. "[CODE] : ".$e->getCode()."<br>";
+            $x = $x. "[MESSAGE] : ".$e->getMessage()."<br>";
+            $x = $x. "[IP USER] : ".$_SERVER["REMOTE_ADDR"]."<br>";
+            echo $x;
+        ;
         }
     }
 }
 
 
-if($_SERVER['REQUEST_URI'] === "/phpcours/intro/tp/logout.php"){
+if($_SERVER['REQUEST_URI'] === D_ROOT."logout.php"){
     session_destroy(); 
     header('Location: connexion.php'); 
+}
+
+
+if($_SERVER['REQUEST_URI'] === D_ROOT."error.php"){
+    header("HTTP/1.1 410 Gone");
 }
 ?>

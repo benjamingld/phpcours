@@ -11,7 +11,7 @@
         <div class="form-group row  mt-3">
             <label for="inputName" class="col-sm-2 col-form-label">Password :</label>
             <div class="col-sm-10">
-                <input type="password" class="form-control" name="pass"  placeholder="Mot de passe">
+                <input type="password" class="form-control" name="password"  placeholder="Mot de passe">
             </div>
         </div>
         <div class="form-group row  mt-3">

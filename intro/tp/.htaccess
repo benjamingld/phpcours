@@ -12,6 +12,12 @@ SetEnv SESSION_USE_TRANS_SID 0
 RewriteEngine On
 RewriteBase /phpcours/intro/tp/
 
+
+# REDIRECTION index.php ou .html ou .asp ou .htm vers /
+RewriteCond %{THE_REQUEST}  ^(GET|POST|HEAD)\ (/.*)?/index.(htm|html|php|asp)
+RewriteRule ^(.*)index.(htm|html|php|asp)$ $1 [R=301,L]
+
+
 # [^\s?] tout caractere qui n'est pas un espace - ? O ou 1  - * 0 / plusieurs
 #%1 reference à rewriteCond
 #$1 reference a rewriteRule

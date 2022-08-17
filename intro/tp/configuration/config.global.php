@@ -9,3 +9,6 @@ include("autoload.php");
 include_once("config_database.php");
 //inclure la connexion bdd
 include_once("database.php");
+
+//CREATION DE CONSTANTES
+include_once("constantes.php");
