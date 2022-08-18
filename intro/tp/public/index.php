@@ -1,8 +1,11 @@
 <?php include("../configuration/config.global.php"); ?>
 
+<?php include("../model/logic.php"); ?>
+
 <?php include("../controller/verification.php"); ?>
 
 <?php include("../views/header.php"); ?>
+
 
 <?php
     switch(strtok($_SERVER['REQUEST_URI'],"?")){

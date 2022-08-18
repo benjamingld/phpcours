@@ -39,8 +39,10 @@
             }
             echo "</ul>";
         echo "</div>";
-        }else{
+        }else if($erreur){
+            echo "<div class=\"alert alert-success mt-3\">{$erreur}</div>";
+        }  else{
             echo "<div class=\"alert alert-success mt-3\">Demande envoyer</div>";
-        }   
+        }
     }
     ?>

@@ -36,7 +36,7 @@ if($_SERVER['REQUEST_URI'] === D_ROOT."contact.php"){
         $connexion = getPDO();
         //PERMETTRE DE SAVOIR SI UN UTILISATEUR EXISTE
         
-            $sql = "INSERT INTO contact (`nom`,`prenom`,`mail`,`demande`) VALUES (:nom,:prenom,:mail,:demande)";
+            $sql = "INSERT INTO coct (`nom`,`prenom`,`mail`,`demande`) VALUES (:nom,:prenom,:mail,:demande)";
             $prep = $connexion->prepare($sql);
             $prep->execute([
             'nom'       => $valid_data['nom'],
@@ -45,15 +45,8 @@ if($_SERVER['REQUEST_URI'] === D_ROOT."contact.php"){
             'demande'   => $valid_data['demande']
             ]);
         }catch(PDOException $e){
-            //historisation($nomfichier, PDOException)
-            $x = "--ERREUR REQUETE LE".date("d/m/y H:i:s")."--<br>";
-            $x = $x. "[FICHIER] : ".$e->getFile()."<br>";
-            $x = $x. "[LIGNE] : ".$e->getLine()."<br>";
-            $x = $x. "[CODE] : ".$e->getCode()."<br>";
-            $x = $x. "[MESSAGE] : ".$e->getMessage()."<br>";
-            $x = $x. "[IP USER] : ".$_SERVER["REMOTE_ADDR"]."<br>";
-            echo $x;
-        ;
+            historisation(LOG_CONTACT,$e);
+            echo "Une erreur est survenue";
         }
     }
 }
@@ -103,16 +96,9 @@ if($_SERVER['REQUEST_URI'] === D_ROOT."connexion.php"){
                 $erreur = "Aucun compte utilisateur existe avec ce mail";
             }
         }catch(PDOException $e){
-            $x = "--ERREUR REQUETE LE".date("d/m/y H:i:s")."--<br>";
-            $x = $x. "[FICHIER] : ".$e->getFile()."<br>";
-            $x = $x. "[LIGNE] : ".$e->getLine()."<br>";
-            $x = $x. "[CODE] : ".$e->getCode()."<br>";
-            $x = $x. "[MESSAGE] : ".$e->getMessage()."<br>";
-            $x = $x. "[IP USER] : ".$_SERVER["REMOTE_ADDR"]."<br>";
-            echo $x;
-        ;
+            historisation(LOG_,$e);
+            echo "Une erreur est survenue";
         }
-
     }
 }
 
@@ -167,14 +153,8 @@ if($_SERVER['REQUEST_URI'] === D_ROOT."creation_compte.php"){
                 $erreur .= "Ce mail a déjà été utilisé";
             }
         }catch(PDOException $e){
-            $x = "--ERREUR REQUETE LE".date("d/m/y H:i:s")."--<br>";
-            $x = $x. "[FICHIER] : ".$e->getFile()."<br>";
-            $x = $x. "[LIGNE] : ".$e->getLine()."<br>";
-            $x = $x. "[CODE] : ".$e->getCode()."<br>";
-            $x = $x. "[MESSAGE] : ".$e->getMessage()."<br>";
-            $x = $x. "[IP USER] : ".$_SERVER["REMOTE_ADDR"]."<br>";
-            echo $x;
-        ;
+            historisation(LOG_UTILISATEUR,$e);
+            $erreur = "Une erreur est survenue contacter l'administrateur" .ADMIN_MAIL;
         }
     }
 }
