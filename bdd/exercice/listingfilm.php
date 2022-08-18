@@ -6,10 +6,11 @@ SI LE FILM EXISTE PAS VOUS AFFICHER UNE ERREUR -->
 
 <?php
 include_once "../exemple/config/setup.php";
-$connexion = getPDO();
+
 
 if(isset($_GET['id_film']) and !empty($_GET)){
     
+    $connexion = getPDO();
     $sql ="SELECT * FROM film WHERE id=?";
     $stm = $connexion->prepare($sql);
     $stm->execute([$_GET['id_film']]);
@@ -17,7 +18,6 @@ if(isset($_GET['id_film']) and !empty($_GET)){
     echo "Veuillez entrer l'id !!!!";
 }
 ?>
-
 
 <!DOCTYPE html>
 <html lang="en">
