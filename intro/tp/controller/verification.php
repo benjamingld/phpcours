@@ -45,8 +45,8 @@ if($_SERVER['REQUEST_URI'] === D_ROOT."contact.php"){
             'demande'   => $valid_data['demande']
             ]);
         }catch(PDOException $e){
-            historisation(LOG_CONTACT,$e);
-            echo "Une erreur est survenue";
+            historisation(LOG_CONTACT, $e);
+            $erreur = "Une erreur est survenue";
         }
     }
 }
@@ -96,8 +96,8 @@ if($_SERVER['REQUEST_URI'] === D_ROOT."connexion.php"){
                 $erreur = "Aucun compte utilisateur existe avec ce mail";
             }
         }catch(PDOException $e){
-            historisation(LOG_,$e);
-            echo "Une erreur est survenue";
+            historisation(LOG_UTILISATEUR, $e);
+            $erreur = "Une erreur est survenue contacter l'administrateur ".ADMIN_MAIL;
         }
     }
 }
@@ -138,7 +138,7 @@ if($_SERVER['REQUEST_URI'] === D_ROOT."creation_compte.php"){
             $prep->execute(["email"=>$valid_data['email']]);
             //SI AUCUNE LIGNE ALORS USER NON EXISTANT DANS LA BDD
             if($prep->rowCount()==0){
-                $sql = "INSERT INTO `utilisateur`(`civilite`,`nom`, `prenom`, `naissance`, `email`, `password`, `ip`) VALUES (:civilite,:nom,:prenom,:naissance,:email,:password,:ip)";
+                $sql = "INSERT INTO `utilisateure`(`civilite`,`nom`, `prenom`, `naissance`, `email`, `password`, `ip`) VALUES (:civilite,:nom,:prenom,:naissance,:email,:password,:ip)";
                 $prep = $connexion->prepare($sql);
                 $prep->execute([
                     'civilite'      => $valid_data['civilite'],
@@ -153,8 +153,8 @@ if($_SERVER['REQUEST_URI'] === D_ROOT."creation_compte.php"){
                 $erreur .= "Ce mail a déjà été utilisé";
             }
         }catch(PDOException $e){
-            historisation(LOG_UTILISATEUR,$e);
-            $erreur = "Une erreur est survenue contacter l'administrateur" .ADMIN_MAIL;
+            historisation(LOG_UTILISATEUR, $e);
+            $erreur = "Une erreur est survenue contacter l'administrateur ".ADMIN_MAIL;
         }
     }
 }

@@ -1,6 +1,6 @@
 <?php
 
-function historisation($nomfichier, $e){
+function historisation($nomfichier, $erreur){
 
     
     //CHEMIN + FICHIER LOG
