@@ -89,26 +89,3 @@ class Voiture{
 
     
 }
-
-
-
-//QUAND AUCUN PARAMETTRE DANS LE CONSTRUCTEUR, LES PARANTHESES SONT FACULTATIVES
-$mavoiture = new Voiture("Peugeot", 50000, "2008", "Jean");
-//LANCEMENT DE LA METHODE AFFICHAGE PROPRIETAIRE
-$mavoiture->affichageProprietaire();
-
-
-$mavoiture->set_vitesse_max(230);
-echo $mavoiture->get_vitesse_max();
-
-
-$mavoiture2 = new Voiture("Nissan", 20000, "Skyline", "Abdel");
-$mavoiture2->affichageProprietaire();
-
-var_dump($mavoiture,$mavoiture2);
-
-$mavoiture2->set_proprietaire = 100;
-echo $mavoiture2->get_proprietaire();
-
-
-//GENERER GETTER ET SETTER ET RAJOUTER UNE METHODE

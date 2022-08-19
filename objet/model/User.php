@@ -1,6 +1,6 @@
 <?php
 
-class Utilisateur{
+class User{
 
     private $_id;
     private $_civilite;
@@ -137,68 +137,35 @@ class Utilisateur{
     <?php
     }
 
+    // public function affichageTableau1($color){
 
-// public function affichageTableau1($color){
+    //     $content = "<table border=1 cellpadding=3 style='color:{$color}'>"  ;          
+    //         $content .= "<tr>";
+    //             $content .="<td>ID</td>";
+    //             $content .="<td>CIVILITE</td>";
+    //             $content .="<td>NOM</td>";
+    //             $content .="<td>PRENOM</td>";
+    //             $content .="<td>NAISSANCE</td>";
+    //             $content .="<td>EMAIL</td>";
+    //             $content .="<td>PASSWORD</td>";
+    //             $content .="<td>DATE CREATION</td>";
+    //             $content .="<td>IP</td>";
+    //         $content .=" </tr>";
+    //         $content .="<tr>"          ;         
+    //             $content .="<td>{$this->get_id()}</td>";
+    //             $content .=" <td>{$this->get_civilite()}</td>";
+    //             $content .="<td>{$this->get_nom()}</td>";
+    //             $content .="<td>".htmlspecialchars($this->get_prenom())."</td>";
+    //             $content .="<td>{$this->get_naissance()}</td>";
+    //             $content .="<td>{$this->get_email()}</td>";
+    //             $content .="<td>{$this->get_password()}</td>";
+    //             $content .="<td>{$this->get_date_creation()}</td>";
+    //             $content .="<td>{$this->get_ip()}</td>";
+    //         $content .= "</tr>";
+    //     $content .= "</table>";
+    
+    //     return $content;
+    
+    //     }
 
-//     $content = "<table border=1 cellpadding=3 style='color:{$color}'>"  ;          
-//         $content .= "<tr>";
-//             $content .="<td>ID</td>";
-//             $content .="<td>CIVILITE</td>";
-//             $content .="<td>NOM</td>";
-//             $content .="<td>PRENOM</td>";
-//             $content .="<td>NAISSANCE</td>";
-//             $content .="<td>EMAIL</td>";
-//             $content .="<td>PASSWORD</td>";
-//             $content .="<td>DATE CREATION</td>";
-//             $content .="<td>IP</td>";
-//         $content .=" </tr>";
-//         $content .="<tr>"          ;         
-//             $content .="<td>{$this->get_id()}</td>";
-//             $content .=" <td>{$this->get_civilite()}</td>";
-//             $content .="<td>{$this->get_nom()}</td>";
-//             $content .="<td>".htmlspecialchars($this->get_prenom())."</td>";
-//             $content .="<td>{$this->get_naissance()}</td>";
-//             $content .="<td>{$this->get_email()}</td>";
-//             $content .="<td>{$this->get_password()}</td>";
-//             $content .="<td>{$this->get_date_creation()}</td>";
-//             $content .="<td>{$this->get_ip()}</td>";
-//         $content .= "</tr>";
-//     $content .= "</table>";
-
-//     return $content;
-
-//     }
-
-
-}
-
-//DECLARATION DES UTILISATEURS
-$user1 = new Utilisateur(1, true, "Vandamme", "Jean-Claude", "10-10-1990", "jcvd@test.com", 123456, "07-05-2020", "135.135.135.135");
-$user2 = new Utilisateur(2, false, "Post", "Julie", "10-12-2000", "julie@test.com", 65874, "07-05-2021", "155.542.548.128");
-
-var_dump($user1);
-echo $user1->informationUtilisateur();
-
-
-//GENERER GETTER ET SETTER ET RAJOUTER UNE METHODE
-//QUI PERMET D'AFFICHER SOUS FORME D'UN TABLEAU HTML LES INFORMATIONS DE MON UTILISATEUR
-
-//AFFICHAGE LIGNE PAR LIGNE
-// $color = "blue";
-// $user1->affichageTableau($color);
-
-// $color = "red";
-// $user2->affichageTableau($color);
-
-
-//AFFICHAGE DINAMIQUE
-$users = [$user1,$user2];
-var_dump($users);
-
-foreach($users as $user){
-    echo $user->affichageTableau("red");
-}
-
-// foreach($users as $user){
-//     echo $user->affichageTableau1("blue");
-// }
+    }
