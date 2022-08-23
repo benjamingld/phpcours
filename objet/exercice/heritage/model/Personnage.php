@@ -2,17 +2,18 @@
 
 class Personnage{
 
-    private $id;
-    private $nom;
-    private $hp;
-    private $mp;
-    private $lvl;
-    private $force;
-    private $image;
-    private $dateCreation;
-    private $activation;
-    private $ip;
+    protected $id;
+    protected $nom;
+    protected $hp;
+    protected $mp;
+    protected $lvl;
+    protected $force;
+    protected $image;
+    protected $dateCreation;
+    protected $activation;
+    protected $ip;
 
+    
     private function hydrate(array $data){
         foreach($data as $key=>$value){
             $method = 'set'.ucfirst($key);
@@ -24,18 +25,9 @@ class Personnage{
         }
     }
 
-    public function __construct(array $infos)
+    public function __construct(array $data)
     {
-        $this->id = $infos['id'];
-        $this->nom = $infos['nom'];
-        $this->hp = $infos['hp'];
-        $this->mp = $infos['mp'];
-        $this->lvl = $infos['lvl'];
-        $this->force = $infos['force'];
-        $this->image = $infos['image'];
-        $this->dateCreation = $infos['dateCreation'];
-        $this->activation = $infos['activation'];
-        $this->ip = $infos['ip'];
+        $this->hydrate($data);
     }
 
     /**

@@ -29,8 +29,8 @@ $bdd2 = [
     "ip" => "125.145.125.142"
 ];
 
-$naruto = new Personnage($bdd1);
-$sasuke = new Personnage($bdd2);
+$naruto = new Ninja($bdd1);
+$sasuke = new Ninja($bdd2);
 
 
 
