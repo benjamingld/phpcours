@@ -182,18 +182,40 @@ class UtilisateurManager {
         return $this;
     }
 
+    /**
+     * Undocumented function
+     *
+     * @param [type] $info
+     * @return void
+     */
     public function get($info){
         if(is_int($info)){
             $request = $this->db->query("SELECT * FROM utilisateur WHERE id = ".$info);
-        }else{
-            $request = $this->db->prepare("SELECT * FROM utilisateur WHERE email = :email");
-            $request->execute(["mail"=>$info]);
-        }       
+        } else {
+            $request = $this->db->prepare("SELECT * FROM utilisateur WHERE mail = :mail");
+            $request->execute(["mail" => $info]);
+        }
         $data = $request->fetch(PDO::FETCH_ASSOC);
-        return ($data) ? new Utilisateur($data):0;
+        return ($data)?new Utilisateur($data):0;
     }
 
     public function setDb($db){$this->db = $db;}
+
+
+    /**
+     * Undocumented function
+     *
+     * @return array
+     */
+    public function getAll():array{
+        $users = [];
+
+        $request = $this->db->query("SELECT * FROM utilisateur ORDER BY id");
+        while($raw = $request->fetch(PDO::FETCH_ASSOC)){
+            $users[] = new Utilisateur($raw);
+        }
+        return $users;
+    }
 }
 
 
@@ -203,7 +225,7 @@ var_dump($utilisateurManager);
 
 $user1 = $utilisateurManager->get(1);
 $user2 = $utilisateurManager->get("p.louis@test.fr");
-$user2 = $utilisateurManager->get("pjnlbhj.louis@test.fr");
+$user3 = $utilisateurManager->get("pjnlbhj.louis@test.fr");
 
 var_dump($user1,$user2,$user3);
 
@@ -212,3 +234,6 @@ if($user3){
 }else{
     echo "User inexistant";
 }
+
+$tabUsers = $utilisateurManager->getAll();
+var_dump($tabUsers);
