@@ -25,7 +25,6 @@ class NewsManager{
     public function insert($titre, $description){
         $request = $this->db->prepare("INSERT INTO `news`(`titre`, `description`) VALUES (:titre, :description)");
         $request->execute([":titre"=>$titre , ":description"=>$description]);
-
     }
     
     public function update($titre, $description, $id){
@@ -37,4 +36,5 @@ class NewsManager{
         $request = $this->db->prepare("DELETE FROM `news` WHERE id=:id");
         $request->execute([":id"=>$id]);
     }
+
 }
