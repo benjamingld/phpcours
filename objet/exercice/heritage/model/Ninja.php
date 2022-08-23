@@ -1,24 +1,17 @@
 <?php
 
 class Ninja extends Personnage{
-    private $classePerso;
+    private $rang;
 
-    /**
-     * Get the value of classePerso
-     */ 
-    public function getClassePerso()
+
+    public function getRang()
     {
-        return $this->classePerso;
+        return $this->rang;
     }
 
-    /**
-     * Set the value of classePerso
-     *
-     * @return  self
-     */ 
-    public function setClassePerso($classePerso)
+    public function setRang($rang)
     {
-        $this->classePerso = $classePerso;
+        $this->rang = $rang;
 
         return $this;
     }
