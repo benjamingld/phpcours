@@ -6,8 +6,6 @@
 
 <?php include("../views/header.php"); ?>
 
-<?php include("../controller/ContactController.php")?>
-
 
 <?php
     switch(strtok($_SERVER['REQUEST_URI'],"?")){

@@ -10,3 +10,15 @@
 [CODE] : 42S02
 [MESSAGE] : SQLSTATE[42S02]: Base table or view not found: 1146 La table 'tpvalenciennes22.contacte' n'existe pas
 [IP USER] : ::1
+--ERREUR REQUETE LE 24/08/22 13:55:16--
+[FICHIER] : C:\wamp64\www\phpcours\intro\tp\model\contactManager.php
+[LIGNE] : 26
+[CODE] : 42S02
+[MESSAGE] : SQLSTATE[42S02]: Base table or view not found: 1146 La table 'tpvalenciennes22.contac' n'existe pas
+[IP USER] : ::1
+--ERREUR REQUETE LE 24/08/22 14:12:28--
+[FICHIER] : C:\wamp64\www\phpcours\intro\tp\model\contactManager.php
+[LIGNE] : 26
+[CODE] : 42S02
+[MESSAGE] : SQLSTATE[42S02]: Base table or view not found: 1146 La table 'tpvalenciennes22.contac' n'existe pas
+[IP USER] : ::1

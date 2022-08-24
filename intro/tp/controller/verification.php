@@ -26,20 +26,19 @@ if($_SERVER['REQUEST_URI'] === D_ROOT."contact.php"){
     //SI IL N'Y A PAS D'ERREUR
     if (!$gump->errors()) {  
         //INSERTION EN BASE DE DONNEES
+
         try{
-            $connexion = getPDO();
-            $sql = "INSERT INTO `contact`( `nom`, `prenom`, `mail`, `demande`) VALUES (:nom,:prenom,:mail,:demande)";
-            $prep = $connexion->prepare($sql);
-            $prep->execute([
-                'nom'           => $valid_data['nom'],
-                'prenom'        => $valid_data['prenom'],
-                'mail'          => $valid_data['mail'],
-                'demande'       => $valid_data['demande']
-            ]);
-        }catch(PDOException $e){
-            historisation(LOG_CONTACT, $e);
-            $erreur = "Une erreur est survenue";
-        }
+            $db = getPDO();
+        $contactManager = new ContactManager($db);
+        $contact = new Contact($valid_data);
+        $retour = $contactManager->add($contact);
+        
+    }catch(PDOException $e){
+        historisation(LOG_CONTACT, $e);
+        $erreur = "Une erreur est survenue contacter l'administrateur ".ADMIN_MAIL;
+    }
+        
+
     }
 
 }
@@ -98,7 +97,6 @@ if($_SERVER['REQUEST_URI'] === D_ROOT."connexion.php"){
 
 }
 
-
 if($_SERVER['REQUEST_URI'] === D_ROOT."creation_compte.php"){
     
     $gump = new GUMP("fr");
@@ -131,7 +129,7 @@ if($_SERVER['REQUEST_URI'] === D_ROOT."creation_compte.php"){
             $prep->execute(["email"=>$valid_data['email']]);
             //SI AUCUNE LIGNE ALORS USER NON EXISTANT DANS LA BDD
             if($prep->rowCount()==0){
-                $sql = "INSERT INTO `utilisateure`(`civilite`,`nom`, `prenom`, `naissance`, `email`, `password`, `ip`) VALUES (:civilite,:nom, :prenom, :naissance, :email, :password, :ip)";
+                $sql = "INSERT INTO `utilisateur`(`civilite`,`nom`, `prenom`, `naissance`, `email`, `password`, `ip`) VALUES (:civilite,:nom, :prenom, :naissance, :email, :password, :ip)";
                 $prep = $connexion->prepare($sql);
                 $prep->execute([
                     'civilite'      => $valid_data['civilite'],
@@ -152,7 +150,6 @@ if($_SERVER['REQUEST_URI'] === D_ROOT."creation_compte.php"){
         
     }
 }
-
 
 if($_SERVER['REQUEST_URI'] === D_ROOT."logout.php"){
     session_destroy(); 
