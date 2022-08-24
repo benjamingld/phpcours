@@ -1,6 +1,6 @@
 <?php
 
-class Personnage{
+abstract class Personnage implements Iterator{
 
     protected $id;
     protected $nom;
@@ -12,6 +12,7 @@ class Personnage{
     protected $dateCreation;
     protected $activation;
     protected $ip;
+    protected $description;
 
     
     private function hydrate(array $data){
@@ -23,11 +24,13 @@ class Personnage{
             }
 
         }
+        
     }
 
     public function __construct(array $data)
     {
         $this->hydrate($data);
+        echo "CONSTRUCTEUR".__CLASS__."<br>";
     }
 
     /**
@@ -43,7 +46,7 @@ class Personnage{
      *
      * @return  self
      */ 
-    public function setIp($ip)
+    protected function setIp($ip)
     {
         $this->ip = $ip;
 
@@ -230,27 +233,8 @@ class Personnage{
         return $this;
     }
 
-
-    public function SeeCard():void{
-        ?>
-        <div class="card" style="width: 18rem;">
-            <img src="<?=$this->getImage()?>" class="card-img-top">
-            <div class="card-body">
-                <h5 class="card-title"><?=htmlspecialchars($this->getNom())?></h5>
-                <p class="card-text">
-                    Niveau : <?=$this->getLvl()?> <br>
-                    HP : <?=$this->getHp()?> <br>
-                    MP : <?=$this->getMp()?> <br>
-                </p>
-            </div>
-            <ul class="list-group list-group-flush">
-                <li class="list-group-item">Classe : <?=$this->getClassePerso()?></li>
-                <li class="list-group-item">Force : <?=$this->getForce()?></li>
-                <li class="list-group-item">Joueur depuis : <?=$this->getDateCreation()?></li>
-            </ul>
-            </div>
-        <?php
-    }
+    //CELA M'OBLIGE A CREER LA METHODE SEECARD DANS CHAQUE ENFANT
+    abstract public function SeeCard();
 
 
     public function Combat(Personnage $p){
@@ -267,5 +251,27 @@ class Personnage{
             $retour .= "<strong>".$p->getNom()." a perdu le combat</strong>";
         }
         return $retour;
+    }
+
+
+
+    /**
+     * Get the value of description
+     */ 
+    public function getDescription()
+    {
+        return $this->description;
+    }
+
+    /**
+     * Set the value of description
+     *
+     * @return  self
+     */ 
+    public function setDescription($description)
+    {
+        $this->description = $description;
+
+        return $this;
     }
 }
