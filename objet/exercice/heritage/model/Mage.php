@@ -4,8 +4,6 @@ class Mage extends Personnage{
 
     protected $magie;
 
-    
-
     /**
      * Get the value of magie
      */ 
@@ -31,12 +29,12 @@ class Mage extends Personnage{
         <div class="card bg-danger" style="width: 18rem;">
             <img src="<?=$this->getImage()?>" class="card-img-top">
             <div class="card-body">
-                <h5 class="card-title"><?=htmlspecialchars($this->getNom())?></h5>
+                <h5 class="card-title"><?=$this->write($this->getNom())?></h5>
                 <p class="card-text">
                     Niveau : <?=$this->getLvl()?> <br>
                     HP : <?=$this->getHp()?> <br>
                     MP : <?=$this->getMp()?> <br>
-                    Type de mage : <?=$this->getMagie()?> <br>
+                    Type de mage : <?=$this->write($this->getMagie())?> <br>
                     Force : <?=$this->getForce()?>
                 </p>
             </div>

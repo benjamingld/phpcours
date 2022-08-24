@@ -1,0 +1,12 @@
+--ERREUR REQUETE LE 18/08/22 07:21:11--
+[FICHIER] : D:\wamp64\www\phpcours\tp\controller\verification.php
+[LIGNE] : 72
+[CODE] : 42S02
+[MESSAGE] : SQLSTATE[42S02]: Base table or view not found: 1146 La table 'tpvalenciennes22.utilisateure' n'existe pas
+[IP USER] : ::1
+--ERREUR REQUETE LE 18/08/22 07:24:42--
+[FICHIER] : D:\wamp64\www\phpcours\tp\controller\verification.php
+[LIGNE] : 143
+[CODE] : 42S02
+[MESSAGE] : SQLSTATE[42S02]: Base table or view not found: 1146 La table 'tpvalenciennes22.utilisateure' n'existe pas
+[IP USER] : ::1

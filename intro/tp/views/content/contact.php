@@ -16,7 +16,7 @@
         <div class="form-group row mt-3">
             <label for="inputName" class="col-sm-2 col-form-label">E-mail</label>
             <div class="col-sm-10">
-                <input type="mail" class="form-control" name="mail"  placeholder="E-mail">
+                <input type="text" class="form-control" name="mail"  placeholder="E-mail">
             </div>
         </div>
         <div class="form-group mt-3">
@@ -31,18 +31,18 @@
     </form>
     <?php 
     if(isset($_POST['soumettre'])){
-        if($gump->get_errors_array()){ 
+        if($gump->get_errors_array()){
             echo "<div class=\"alert alert-danger mt-3\">";
-            echo "<ul>";
-            foreach($gump->get_errors_array() as $value){
-                echo "<li>{$value}</li>";
-            }
-            echo "</ul>";
-        echo "</div>";
-        }else if($erreur){
-            echo "<div class=\"alert alert-success mt-3\">{$erreur}</div>";
-        }  else{
-            echo "<div class=\"alert alert-success mt-3\">Demande envoyer</div>";
+                echo "<ul>";
+                foreach($gump->get_errors_array() as $value){
+                    echo "<li>{$value}</li>";
+                }
+                echo "</ul>";
+            echo "</div>";
+        } else if($erreur){
+            echo "<div class=\"alert alert-danger mt-3\">{$erreur}</div>";
+        } else{
+            echo "<div class=\"alert alert-success mt-3\">Contact envoyé</div>";
         }
     }
     ?>

@@ -1,36 +1,33 @@
 <?php
 
 function historisation($nomfichier, $erreur){
-
-    
     //CHEMIN + FICHIER LOG
-$dossier = "../logs/";
-$chemin = "{$dossier}{$nomfichier}";
+    $dossier = "../log/";
+    $chemin = "{$dossier}{$nomfichier}";
 
-$message = "--ERREUR REQUETE LE".date("d/m/y H:i:s")."--<br>";
-$message .= "[FICHIER] : ".$e->getFile()."<br>";
-$message .= "[LIGNE] : ".$e>getLine()."<br>";
-$message .= "[CODE] : ".$e->getMessage()."<br>";
-$message .= "[IP USER] : ".$_SERVER["REMOTE_ADDR"]."<br>";   
+    //GESTION DE MES ERREURS
+    $message = "--ERREUR REQUETE LE ".date("d/m/y H:i:s")."--\n";
+    $message .=  "[FICHIER] : ".$erreur->getFile()."\n";
+    $message .=  "[LIGNE] : ".$erreur->getLine()."\n";
+    $message .=  "[CODE] : ".$erreur->getCode()."\n";
+    $message .=  "[MESSAGE] : ".$erreur->getMessage()."\n";
+    $message .=  "[IP USER] : ".$_SERVER['REMOTE_ADDR']."\n";
 
-//VERIFIER SI LE FICHEIR EXISTE SINON LE CREE $nomfichier
 
-//si log/ n'existe aps , je le crée
-if(!is_dir($dossier)){
-    mkdir($dossier);
+    //SI LE DOSSIER N'EXISTE, PHP LE CREE AVEC MKDIR
+    //IS_DIR($DOSSIER) RENVOI FALSE SI LE DOSSIER EXISTE
+    if(!is_dir($dossier)){
+        mkdir($dossier);
+    }
+
+    //POURLE FICHIER
+    if(file_exists($chemin)){
+        //RECUPERATION DU CONTENU + AJOUT DE MESSAGE
+        $contenu = file_get_contents($chemin);
+        $message = $contenu.$message;
+    }
+
+    //SI LE FICHIER N'EXISTE PAS LA FONCTION CREE LE FICHIER AVEC LE CONTENU DONNE
+    //SI LE FICHIER EXISTE, ECRASE LE FICHIER EXISTANT AVEC LE CONTENU DONNE
+    file_put_contents($chemin, $message);
 }
-
-//SI FICHIER existe j'ajoute le contenu si je le recupere et j'en rajoute
-if(file_exists($chemin)){
-    //JE RECUPERE LE CONTENU DU FIXHIER
-    $contenu = file_get_contents($chemin);
-    $message = $contenu.$message;
-}    
-
-//SI LE FICHIER N'EXISTE PAS LA FONCTION CREE LE FICHIER AVEC LE CONTENU DONNEE
-//SI LE FICHIER EXISTE, ECRASE LE FICHIER EXISTANT AVECLE CONTENU DONNEE
-file_put_contents($chemin, $message);
-
-}
-
-?>

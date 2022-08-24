@@ -28,12 +28,12 @@ class Ninja extends Personnage{
         <div class="card bg-success" style="width: 18rem;">
             <img src="<?=$this->getImage()?>" class="card-img-top">
             <div class="card-body">
-                <h5 class="card-title"><?=htmlspecialchars($this->getNom())?></h5>
+                <h5 class="card-title"><?=$this->write($this->getNom())?></h5>
                 <p class="card-text">
                     Niveau : <?=$this->getLvl()?> <br>
                     HP : <?=$this->getHp()?> <br>
                     MP : <?=$this->getMp()?> <br>
-                    Rang ninja : <?=$this->getRang()?> <br>
+                    Rang ninja : <?=$this->write($this->getRang())?> <br>
                     Force : <?=$this->getForce()?>
                 </p>
             </div>

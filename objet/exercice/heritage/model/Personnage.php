@@ -2,6 +2,9 @@
 
 abstract class Personnage implements Iterator{
 
+    //utilisation du trait
+    use Clean;
+
     protected $id;
     protected $nom;
     protected $hp;
@@ -13,8 +16,36 @@ abstract class Personnage implements Iterator{
     protected $activation;
     protected $ip;
     protected $description;
+    protected $position = 0;
+    protected $tab = [SELF::S_FRANCE, self::S_RUSSE, self::S_CHINOIS, self::S_AMERICAIN];
 
-    
+    const S_FRANCE = "Serveur France";
+    const S_RUSSE = "Serveur Russe";
+    const S_CHINOIS = "Server Chinois";
+    const S_AMERICAIN = "Serveur Américain";
+
+    #[\ReturnTypeWillChange] // equivalent à :mixed comme la fonction key().   
+    public function current(){
+        return $this->tab[$this->position];
+    }
+
+    public function key():mixed{
+        return $this->position;
+    }
+
+    public function rewind():void{
+        $this->postion = 0;
+    }
+
+    public function next():void{
+        $this->position++;
+    }
+
+    public function valid():bool{
+        return isset($this->tab[$this->position]);
+    }
+
+
     private function hydrate(array $data){
         foreach($data as $key=>$value){
             $method = 'set'.ucfirst($key);
@@ -22,9 +53,7 @@ abstract class Personnage implements Iterator{
             if(method_exists($this,$method)){
                 $this->$method($value);
             }
-
         }
-        
     }
 
     public function __construct(array $data)

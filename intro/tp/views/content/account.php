@@ -28,7 +28,7 @@
         <div class="form-group row mt-3">
             <label for="inputName" class="col-sm-2 col-form-label">Date de naissance</label>
             <div class="col-sm-10">
-                <input type="date" class="form-control" name="naissance"  placeholder="Date de naissance" >
+                <input type="date" class="form-control" name="naissance"  placeholder="naissance" >
             </div>
         </div>
         <div class="form-group row mt-3">
@@ -40,7 +40,7 @@
         <div class="form-group row mt-3">
             <label for="inputName" class="col-sm-2 col-form-label">Mot de passe</label>
             <div class="col-sm-10">
-                <input type="password" class="form-control" name="password"  placeholder="mot de passe" >
+                <input type="password" class="form-control" name="password"  placeholder="Mot de passe" >
             </div>
         </div>
         <div class="form-group row mt-3">
@@ -51,18 +51,21 @@
     </form>
     <?php 
     if(isset($_POST['soumettre'])){
-        if($gump->get_errors_array()){
+        if(($gump->get_errors_array())) {
             echo "<div class=\"alert alert-danger mt-3\">";
-            echo "<ul>";
-            foreach($gump->get_errors_array() as $value){
-                echo "<li>{$value}</li>";
-            }
-            echo "</ul>";
+                echo "<ul>";
+                foreach($gump->get_errors_array() as $value){
+                    echo "<li>{$value}</li>";
+                }
+                echo "</ul>";
             echo "</div>";
-        }else if($erreur){
+        } else if($erreur){
             echo "<div class=\"alert alert-danger mt-3\">{$erreur}</div>";
-        }else{
+        } else {
             echo "<div class=\"alert alert-success mt-3\">Inscription validé vous pouvez vous connecter</div>";
-        }  
+        }
     }
     ?>
+
+
+

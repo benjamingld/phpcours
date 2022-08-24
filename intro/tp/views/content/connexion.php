@@ -3,15 +3,15 @@
 
     <form method="post">
         <div class="form-group row mt-3">
-            <label for="mail" class="col-sm-2 col-form-label">E-mail :</label>
+            <label for="mail" class="col-sm-2 col-form-label">E-mail : (test@test.fr)</label>
             <div class="col-sm-10">
                 <input type="text" class="form-control" name="mail"  id="mail" placeholder="E-mail">
             </div>
         </div>
         <div class="form-group row  mt-3">
-            <label for="inputName" class="col-sm-2 col-form-label">Password :</label>
+            <label for="inputName" class="col-sm-2 col-form-label">Password (123456)</label>
             <div class="col-sm-10">
-                <input type="password" class="form-control" name="password"  placeholder="Mot de passe">
+                <input type="password" class="form-control" name="pass"  placeholder="Mot de passe">
             </div>
         </div>
         <div class="form-group row  mt-3">

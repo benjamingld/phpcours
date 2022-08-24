@@ -34,15 +34,10 @@ $bdd2 = [
 $naruto = new Ninja($bdd1);
 $sasuke = new Mage($bdd2);
 
-var_dump($naruto,$sasuke);
+//var_dump($naruto,$sasuke);
 $retourCombat = $naruto->Combat($sasuke);
 
-
-
-
-
-
-
-
-
+foreach($naruto as $key=>$value){
+    echo "{$key}=> {$value}<br/>";
+}
 

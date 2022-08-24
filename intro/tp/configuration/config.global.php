@@ -3,12 +3,9 @@
 include("session.php");
 //INLURE MON AUTOLOAD
 include("autoload.php");
-
-
-//inclure mes constantes de connexion bdd
+//INCLURE MES CONSTANTES DE CONNEXION A LA BDD
 include_once("config_database.php");
-//inclure la connexion bdd
+//INCLURE LA CONNEXION PDO
 include_once("database.php");
-
-//CREATION DE CONSTANTES
+//CONSTANTES
 include_once("constantes.php");

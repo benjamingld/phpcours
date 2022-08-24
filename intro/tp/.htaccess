@@ -17,7 +17,6 @@ RewriteBase /phpcours/intro/tp/
 RewriteCond %{THE_REQUEST}  ^(GET|POST|HEAD)\ (/.*)?/index.(htm|html|php|asp)
 RewriteRule ^(.*)index.(htm|html|php|asp)$ $1 [R=301,L]
 
-
 # [^\s?] tout caractere qui n'est pas un espace - ? O ou 1  - * 0 / plusieurs
 #%1 reference à rewriteCond
 #$1 reference a rewriteRule
@@ -27,11 +26,10 @@ RewriteRule ^(.*) %1 [L,NE,R=301]
 # PERMET DE RECUPERER LE CONTENU DE LA PAGE XXX.php dans public/xxx.php
 RewriteRule ^((?!public/).*)$  public/$1 [L,NC]
 
-#SI L URL NE CORRESPOND PAS AU CONTENU A UN FICHIER QUI EST EXISTANT SUR LE SERVEUR
+#SI L'URL NE CORRESPOND PAS A UN FICHIER QUI EST EXISTANT SUR LE SERVEUR
 RewriteCond %{REQUEST_FILENAME} !-f
-#SI L URL NE CORRESPOND PAS AU CONTENU A UN DOSSIER QUI EST EXISTANT SUR LE SERVEUR
-RewriteCond %{REQUEST_FILENAME} !-D
-#CES URL SONT REDIRIGER VERS index.php
+#SI L'URL NE CORRESPOND PAS A UN dossier QUI EST EXISTANT SUR LE SERVEUR
+RewriteCond %{REQUEST_FILENAME} !-d 
+#CES URL SONT REDIRIGE VERS index.php
 RewriteRule ^(.*)$ index.php?$1 [L,QSA]
-
 
