@@ -1,4 +1,8 @@
 <?php
+namespace Model\Manager;
+use \PDO;
+use \PDOException;
+use \Model;
 
 class ContactManager{
 
@@ -15,6 +19,12 @@ class ContactManager{
         return $this;
     }
 
+/**
+ * Undocumented function
+ *
+ * @param Contact $contact
+ * @return void
+ */
     public function add(Contact $contact){
 
         $request = $this->db->prepare("INSERT INTO contact(nom,prenom,mail,demande,date_creation) 

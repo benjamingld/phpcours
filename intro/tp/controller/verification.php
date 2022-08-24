@@ -1,4 +1,11 @@
 <?php
+namespace Controller;
+use PDO;
+use GUMP;
+use contact;
+use PDOException;
+use Model\Contact;
+use Model\Manager\ContactManager;
 //REDIRECT
 if(!isset($_SESSION['mail']) && $_SERVER['REQUEST_URI'] === D_ROOT."profil.php"){
     header("Location: connexion.php");
