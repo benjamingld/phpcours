@@ -26,6 +26,10 @@ class ComposerStaticInit76342e3e84e3f0fae4575a085e222e2c
         array (
             'GUMP\\' => 5,
         ),
+        'C' => 
+        array (
+            'Controller\\' => 11,
+        ),
     );
 
     public static $prefixDirsPsr4 = array (
@@ -45,13 +49,26 @@ class ComposerStaticInit76342e3e84e3f0fae4575a085e222e2c
         array (
             0 => __DIR__ . '/..' . '/wixel/gump/src',
         ),
+        'Controller\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/controller',
+        ),
     );
 
     public static $classMap = array (
+        'AltoRouter' => __DIR__ . '/..' . '/altorouter/altorouter/AltoRouter.php',
         'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
+        'Controller\\DefaultController' => __DIR__ . '/../..' . '/controller/DefaultController.php',
         'GUMP\\ArrayHelpers' => __DIR__ . '/..' . '/wixel/gump/src/ArrayHelpers.php',
         'GUMP\\EnvHelpers' => __DIR__ . '/..' . '/wixel/gump/src/EnvHelpers.php',
         'Model\\Contact' => __DIR__ . '/../..' . '/model/Contact.php',
+        'Model\\Database' => __DIR__ . '/../..' . '/model/Database.php',
+        'Model\\Utilisateur' => __DIR__ . '/../..' . '/model/Utilisateur.php',
+        'Model\\manager\\ContactManager' => __DIR__ . '/../..' . '/model/manager/ContactManager.php',
+        'Model\\manager\\UtilisateurManager' => __DIR__ . '/../..' . '/model/manager/UtilisateurManager.php',
+        'Model\\trait\\Clean' => __DIR__ . '/../..' . '/model/trait/Clean.php',
+        'Model\\trait\\Log' => __DIR__ . '/../..' . '/model/trait/Log.php',
+        'Model\\trait\\Mail' => __DIR__ . '/../..' . '/model/trait/Mail.php',
         'Symfony\\Component\\VarDumper\\Caster\\AmqpCaster' => __DIR__ . '/..' . '/symfony/var-dumper/Caster/AmqpCaster.php',
         'Symfony\\Component\\VarDumper\\Caster\\ArgsStub' => __DIR__ . '/..' . '/symfony/var-dumper/Caster/ArgsStub.php',
         'Symfony\\Component\\VarDumper\\Caster\\Caster' => __DIR__ . '/..' . '/symfony/var-dumper/Caster/Caster.php',

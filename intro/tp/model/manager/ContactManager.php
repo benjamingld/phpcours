@@ -1,10 +1,12 @@
 <?php
-namespace Model\Manager;
+namespace Model\manager;
 use \PDO;
-use \PDOException;
-use \Model;
+use PDOException;
+use Model\Contact;
+
 
 class ContactManager{
+    use \Model\trait\Log;
 
     private $db;
 
@@ -27,6 +29,7 @@ class ContactManager{
  */
     public function add(Contact $contact){
 
+        try{
         $request = $this->db->prepare("INSERT INTO contact(nom,prenom,mail,demande,date_creation) 
         VALUES (:nom, :prenom, :mail, :demande, now())");
         $request->execute([
@@ -34,5 +37,12 @@ class ContactManager{
             ":prenom"=>$contact->getPrenom(),
             ":mail"=>$contact->getMail(),
             ":demande"=>$contact->getDemande()]);
+            return true;
+        }catch(PDOException $e){
+            $this->historisation(LOG_CONTACT, $e);
+            $erreur = "Une erreur est survenue contacter l'administrateur ".ADMIN_MAIL;
+            return false;
+        }
+
     }
 }

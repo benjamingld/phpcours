@@ -6,10 +6,19 @@ $vendorDir = dirname(__DIR__);
 $baseDir = dirname($vendorDir);
 
 return array(
+    'AltoRouter' => $vendorDir . '/altorouter/altorouter/AltoRouter.php',
     'Composer\\InstalledVersions' => $vendorDir . '/composer/InstalledVersions.php',
+    'Controller\\DefaultController' => $baseDir . '/controller/DefaultController.php',
     'GUMP\\ArrayHelpers' => $vendorDir . '/wixel/gump/src/ArrayHelpers.php',
     'GUMP\\EnvHelpers' => $vendorDir . '/wixel/gump/src/EnvHelpers.php',
     'Model\\Contact' => $baseDir . '/model/Contact.php',
+    'Model\\Database' => $baseDir . '/model/Database.php',
+    'Model\\Utilisateur' => $baseDir . '/model/Utilisateur.php',
+    'Model\\manager\\ContactManager' => $baseDir . '/model/manager/ContactManager.php',
+    'Model\\manager\\UtilisateurManager' => $baseDir . '/model/manager/UtilisateurManager.php',
+    'Model\\trait\\Clean' => $baseDir . '/model/trait/Clean.php',
+    'Model\\trait\\Log' => $baseDir . '/model/trait/Log.php',
+    'Model\\trait\\Mail' => $baseDir . '/model/trait/Mail.php',
     'Symfony\\Component\\VarDumper\\Caster\\AmqpCaster' => $vendorDir . '/symfony/var-dumper/Caster/AmqpCaster.php',
     'Symfony\\Component\\VarDumper\\Caster\\ArgsStub' => $vendorDir . '/symfony/var-dumper/Caster/ArgsStub.php',
     'Symfony\\Component\\VarDumper\\Caster\\Caster' => $vendorDir . '/symfony/var-dumper/Caster/Caster.php',

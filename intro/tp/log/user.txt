@@ -28,3 +28,45 @@
 [CODE] : 42S02
 [MESSAGE] : SQLSTATE[42S02]: Base table or view not found: 1146 La table 'tpvalenciennes22.utilisateure' n'existe pas
 [IP USER] : ::1
+--ERREUR REQUETE LE 25/08/22 10:50:36--
+[FICHIER] : C:\wamp64\www\phpcours\intro\tp\model\manager\UtilisateurManager.php
+[LIGNE] : 51
+[CODE] : 21S01
+[MESSAGE] : SQLSTATE[21S01]: Insert value list does not match column list: 1136 Column count doesn't match value count at row 1
+[IP USER] : ::1
+--ERREUR REQUETE LE 25/08/22 10:51:36--
+[FICHIER] : C:\wamp64\www\phpcours\intro\tp\model\manager\UtilisateurManager.php
+[LIGNE] : 51
+[CODE] : 21S01
+[MESSAGE] : SQLSTATE[21S01]: Insert value list does not match column list: 1136 Column count doesn't match value count at row 1
+[IP USER] : ::1
+--ERREUR REQUETE LE 25/08/22 11:23:04--
+[FICHIER] : C:\wamp64\www\phpcours\intro\tp\model\manager\UtilisateurManager.php
+[LIGNE] : 51
+[CODE] : 21S01
+[MESSAGE] : SQLSTATE[21S01]: Insert value list does not match column list: 1136 Column count doesn't match value count at row 1
+[IP USER] : ::1
+--ERREUR REQUETE LE 25/08/22 11:23:33--
+[FICHIER] : C:\wamp64\www\phpcours\intro\tp\model\manager\UtilisateurManager.php
+[LIGNE] : 51
+[CODE] : 21S01
+[MESSAGE] : SQLSTATE[21S01]: Insert value list does not match column list: 1136 Column count doesn't match value count at row 1
+[IP USER] : ::1
+--ERREUR REQUETE LE 25/08/22 11:28:25--
+[FICHIER] : C:\wamp64\www\phpcours\intro\tp\model\manager\UtilisateurManager.php
+[LIGNE] : 52
+[CODE] : 21S01
+[MESSAGE] : SQLSTATE[21S01]: Insert value list does not match column list: 1136 Column count doesn't match value count at row 1
+[IP USER] : ::1
+--ERREUR REQUETE LE 25/08/22 13:10:49--
+[FICHIER] : C:\wamp64\www\phpcours\intro\tp\model\manager\UtilisateurManager.php
+[LIGNE] : 53
+[CODE] : 21S01
+[MESSAGE] : SQLSTATE[21S01]: Insert value list does not match column list: 1136 Column count doesn't match value count at row 1
+[IP USER] : ::1
+--ERREUR REQUETE LE 25/08/22 13:11:58--
+[FICHIER] : C:\wamp64\www\phpcours\intro\tp\model\manager\UtilisateurManager.php
+[LIGNE] : 52
+[CODE] : 21S01
+[MESSAGE] : SQLSTATE[21S01]: Insert value list does not match column list: 1136 Column count doesn't match value count at row 1
+[IP USER] : ::1

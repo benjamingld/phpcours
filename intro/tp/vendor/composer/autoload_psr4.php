@@ -10,4 +10,5 @@ return array(
     'Symfony\\Component\\VarDumper\\' => array($vendorDir . '/symfony/var-dumper'),
     'Model\\' => array($baseDir . '/model'),
     'GUMP\\' => array($vendorDir . '/wixel/gump/src'),
+    'Controller\\' => array($baseDir . '/controller'),
 );
