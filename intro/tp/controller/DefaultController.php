@@ -8,7 +8,7 @@ use Model\Utilisateur;
 use Model\manager\UtilisateurManager;
 
 class DefaultController{
-    
+
     public function index(){
         require_once "../views/content/index.php";
     }

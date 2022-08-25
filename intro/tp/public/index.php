@@ -15,7 +15,7 @@ use AltoRouter;
     $router->map('GET|POST',D_ROOT, "connexion.php", 'controller/UtilisateurController#connexion', 'client-connexion');
     $router->map('GET|POST',D_ROOT, "login.php", 'controller/ContactController#contact', 'client-contact');
     $router->map('GET|POST',D_ROOT, "logout.php", 'controller/UtilisateurController#logout', 'client-logout');
-    $router->map('GET|POST',D_ROOT, "logout.php", 'controller/UtilisateurController#logout', 'client-logout');
+    $router->map('GET|POST',D_ROOT, "profil.php", 'controller/UtilisateurController#profil', 'client-profil');
 
     $match = $router->match();
     var_dump($match);
@@ -30,21 +30,6 @@ use AltoRouter;
         call_user_func_array([$controller, $method],$match['params']);
     }
 
-    // switch(strtok($_SERVER['REQUEST_URI'],"?")){
-
-    //     case D_ROOT."connexion.php" : 
-    //         require_once "../views/content/connexion.php";
-    //         break;
-    //     case D_ROOT."contact.php" : 
-    //         require_once "../views/content/contact.php";
-    //         break;
-    //     case D_ROOT."profil.php" : 
-    //         require_once "../views/content/profil.php";
-    //         break;       
-    //     default :
-    //         header('HTTP/1.0 404 Not Found');
-    //         require_once "../views/content/error.php";
-    // }
 ?>
 
 <?php include("../views/footer.php");?>
