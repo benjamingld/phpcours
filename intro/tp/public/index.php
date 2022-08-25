@@ -11,6 +11,11 @@ use AltoRouter;
 
     $router = new AltoRouter();
     $router->map('GET',D_ROOT, 'controller/DefaultController#index', 'home');
+    $router->map('GET|POST',D_ROOT, "creation_compte.php", 'controller/UtilisateurController#creation', 'client-creation');
+    $router->map('GET|POST',D_ROOT, "connexion.php", 'controller/UtilisateurController#connexion', 'client-connexion');
+    $router->map('GET|POST',D_ROOT, "login.php", 'controller/ContactController#contact', 'client-contact');
+    $router->map('GET|POST',D_ROOT, "logout.php", 'controller/UtilisateurController#logout', 'client-logout');
+    $router->map('GET|POST',D_ROOT, "logout.php", 'controller/UtilisateurController#logout', 'client-logout');
 
     $match = $router->match();
     var_dump($match);
@@ -26,12 +31,7 @@ use AltoRouter;
     }
 
     // switch(strtok($_SERVER['REQUEST_URI'],"?")){
-    //     case D_ROOT :
-    //         require_once "../views/content/index.php";
-    //         break;
-    //     case D_ROOT."creation_compte.php" :
-    //         require_once "../views/content/account.php";
-    //         break;
+
     //     case D_ROOT."connexion.php" : 
     //         require_once "../views/content/connexion.php";
     //         break;
