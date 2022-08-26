@@ -1,0 +1,13 @@
+{
+    "require": {
+        "symfony/var-dumper": "^6.1",
+        "wixel/gump": "^2.0",
+        "altorouter/altorouter": "^2.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Model\\":"model/",
+            "Controller\\":"controller/"
+        }
+    }
+}

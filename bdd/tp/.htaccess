@@ -1,0 +1,35 @@
+AddDefaultCharset UTF-8
+# NE PAS LISTER LE CONTENU D'UN DOSSIER
+Options -Indexes
+Options -Multiviews
+# NE COMPLETE PAS LE FICHIER PAR SON EXTENSION
+Options +FollowSymlinks
+# RECURSIVITE DANS LES SOUS DOSSIER
+RewriteOptions Inherit
+# NE PAS TRANSITE LE SESSION ID DANS L'URL
+SetEnv SESSION_USE_TRANS_SID 0
+
+RewriteEngine On
+RewriteBase /phpcours/tp/
+
+
+# REDIRECTION index.php ou .html ou .asp ou .htm vers /
+RewriteCond %{THE_REQUEST}  ^(GET|POST|HEAD)\ (/.*)?/index.(htm|html|php|asp)
+RewriteRule ^(.*)index.(htm|html|php|asp)$ $1 [R=301,L]
+
+# [^\s?] tout caractere qui n'est pas un espace - ? O ou 1  - * 0 / plusieurs
+#%1 reference à rewriteCond
+#$1 reference a rewriteRule
+RewriteCond %{THE_REQUEST} /public/([^\s?]*) [NC]
+RewriteRule ^(.*) %1 [L,NE,R=301]
+
+# PERMET DE RECUPERER LE CONTENU DE LA PAGE XXX.php dans public/xxx.php
+RewriteRule ^((?!public/).*)$  public/$1 [L,NC]
+
+#SI L'URL NE CORRESPOND PAS A UN FICHIER QUI EST EXISTANT SUR LE SERVEUR
+RewriteCond %{REQUEST_FILENAME} !-f
+#SI L'URL NE CORRESPOND PAS A UN dossier QUI EST EXISTANT SUR LE SERVEUR
+RewriteCond %{REQUEST_FILENAME} !-d 
+#CES URL SONT REDIRIGE VERS index.php
+RewriteRule ^(.*)$ index.php?$1 [L,QSA]
+
