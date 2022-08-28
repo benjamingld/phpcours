@@ -8,22 +8,20 @@ class Contact{
     private $prenom;
     private $mail;
     private $demande;
-    private $date_creation;
 
-    public function hydrate(array $data){
-        foreach($data as $key=>$value){
-            $method = 'set'.ucfirst($key);
-            if(method_exists($this,$method)){
-                $this->$method($value);
-            }
-        }
+    public function hydrate(array $donnees)
+    {
+    foreach ($donnees as $key => $value)
+    {
+        $method = 'set'.ucfirst($key);
+    (method_exists($this,$method))?$this->$method($value):0;
+    }
     }
 
-    public function __construct(array $data){
-        $this->hydrate($data);
+    public function __construct(array $donnees)
+    {
+    $this->hydrate($donnees);
     }
-
-
 
     /**
      * Get the value of id
@@ -121,26 +119,6 @@ class Contact{
     public function setDemande($demande)
     {
         $this->demande = $demande;
-
-        return $this;
-    }
-
-    /**
-     * Get the value of date_creation
-     */ 
-    public function getDate_creation()
-    {
-        return $this->date_creation;
-    }
-
-    /**
-     * Set the value of date_creation
-     *
-     * @return  self
-     */ 
-    public function setDate_creation($date_creation)
-    {
-        $this->date_creation = $date_creation;
 
         return $this;
     }

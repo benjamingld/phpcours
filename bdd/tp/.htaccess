@@ -10,7 +10,7 @@ RewriteOptions Inherit
 SetEnv SESSION_USE_TRANS_SID 0
 
 RewriteEngine On
-RewriteBase /phpcours/tp/
+RewriteBase /phpcours/intro/tp/
 
 
 # REDIRECTION index.php ou .html ou .asp ou .htm vers /

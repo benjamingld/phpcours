@@ -1,48 +1,43 @@
 <?php
 namespace Model\manager;
-use \PDO;
+
+use PDO;
 use PDOException;
 use Model\Contact;
+use Model\trait\Log;
+
 
 
 class ContactManager{
-    use \Model\trait\Log;
+    use Log;
 
     private $db;
 
-    public function __construct(PDO $db){
-        
+    public function __construct(PDO $db)
+    {
         $this->setDb($db);
         return $this;
     }
 
-    public function setDb($db){
-        $this->db = $db;
-        return $this;
-    }
+    public function setDb($db){$this->db = $db;}
 
-/**
- * Undocumented function
- *
- * @param Contact $contact
- * @return void
- */
-    public function add(Contact $contact){
-
+    /**
+     * AJOUT D'UN CONTACT
+     *
+     * @param Contact $contact
+     * @return boolean
+     */
+    public function add(Contact $contact):bool{
         try{
-        $request = $this->db->prepare("INSERT INTO contact(nom,prenom,mail,demande,date_creation) 
-        VALUES (:nom, :prenom, :mail, :demande, now())");
-        $request->execute([
-            ":nom"=>$contact->getNom(),
-            ":prenom"=>$contact->getPrenom(),
-            ":mail"=>$contact->getMail(),
-            ":demande"=>$contact->getDemande()]);
+            $q = $this->db->prepare('INSERT INTO `contacte`( `nom`, `prenom`, `mail`, `demande`) VALUES (:nom,:prenom,:mail,:demande)');
+            $q->execute([":nom"=>$contact->getNom(),":prenom"=>$contact->getPrenom(),":mail"=>$contact->getMail(),":demande"=>$contact->getDemande()]);
             return true;
         }catch(PDOException $e){
+            echo "ERROR PDO ";
             $this->historisation(LOG_CONTACT, $e);
-            $erreur = "Une erreur est survenue contacter l'administrateur ".ADMIN_MAIL;
             return false;
         }
-
     }
+
+
 }

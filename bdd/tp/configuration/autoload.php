@@ -1,1 +1,1 @@
-<?php include("../vendor/autoload.php"); ?>
+<?php include("../../vendor/autoload.php"); ?>
